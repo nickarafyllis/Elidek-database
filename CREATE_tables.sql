@@ -45,45 +45,47 @@ CREATE TABLE IF NOT EXISTS location_address
     city varchar (50)
 );
 
-CREATE TABLE IF NOT EXISTS company
-(
-    company_id int auto_increment PRIMARY KEY NOT NULL,
-    own_funds int not null
-);
-
-CREATE TABLE if not exists university
-(
-    university_id int auto_increment PRIMARY KEY NOT NULL,
-    budget_ministry int not null
-);
-
-CREATE TABLE IF NOT EXISTS research_center
-(
-    research_center_id int auto_increment PRIMARY KEY NOT NULL,
-    budget_ministry int not null,
-    budget_private_actions int not null
-);
-
+/*
 CREATE TABLE IF NOT EXISTS organisation_type
 (
    organisation_type_id int auto_increment PRIMARY KEY NOT NULL,
    university_id int NOT NULL,
    company_id int NOT NULL,
    research_center_id int NOT NULL,
-   FOREIGN KEY (company_id) REFERENCES company(company_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-   FOREIGN KEY (university_id) REFERENCES university(university_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY (organisation_type_id) REFERENCES company(company_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY (organisation_type_id) REFERENCES university(university_id) ON DELETE RESTRICT ON UPDATE CASCADE,
    FOREIGN KEY (research_center_id) REFERENCES research_center(research_center_id) ON DELETE RESTRICT ON UPDATE CASCADE
-);
+);*/
 
 CREATE TABLE IF NOT EXISTS organisation
 (
     organisation_id int auto_increment PRIMARY KEY NOT NULL,
     organisation_name varchar (50) not null,
     abbreviation varchar (10),
-    organisation_type_id int NOT NULL,
     location_address_id int NOT NULL,
-    FOREIGN KEY (organisation_type_id) REFERENCES organisation_type(organisation_type_id) ON DELETE RESTRICT ON UPDATE CASCADE, /*den eimai sigouros edo*/
     FOREIGN KEY (location_address_id) REFERENCES location_address(location_address_id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS company
+(
+    organisation_id int auto_increment PRIMARY KEY NOT NULL, /*prepei na vgalo to auto_increment mallon*/
+    own_funds int not null,
+    FOREIGN KEY (organisation_id) REFERENCES  organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+CREATE TABLE if not exists university
+(
+    organisation_id int auto_increment PRIMARY KEY NOT NULL,
+    budget_ministry int not null,
+    FOREIGN KEY (organisation_id) REFERENCES  organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS research_center
+(
+    organisation_id int auto_increment PRIMARY KEY NOT NULL,
+    budget_ministry int not null,
+    budget_private_actions int not null,
+    FOREIGN KEY (organisation_id) REFERENCES  organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS phone
@@ -100,8 +102,8 @@ CREATE TABLE IF NOT EXISTS researcher
     first_name varchar (50) not null, 
     last_name varchar (50) not null, 
     sex varchar (10) not null, 
-    age int not null,
     date_of_birth date,
+    age int as (TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE())),
     employment_date date,
     organisation_id int NOT NULL,
     FOREIGN KEY (organisation_id) REFERENCES organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -115,7 +117,7 @@ CREATE TABLE IF NOT EXISTS project
     amount int CHECK (amount>=100000 AND amount<=1000000),
     startdate date,
     enddate date,
-    duration int CHECK (duration>0 AND duration<5), 
+    duration int as (TIMESTAMPDIFF(YEAR, startdate, enddate)) CHECK (duration>0 AND duration<5), 
     scientific_field_id int NOT NULL,
     program_id int NOT NULL,
     organisation_id int NOT NULL,
