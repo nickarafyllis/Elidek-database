@@ -4,40 +4,45 @@
 CREATE DATABASE IF NOT EXISTS `HFRIManagement`;
 ALTER DATABASE HFRIManagement
 CHARACTER SET utf8
-COLLATE Greek_CI_AI;
+COLLATE utf8_bin; /*Greek_CI_AI;*/
 
 /* =====================
 	CREATE ENTITIES 
 ======================*/
 USE `HFRIManagement`;
 
-CREATE TABLE IF NOT EXISTS program
+DROP TABLE IF EXISTS program;
+CREATE TABLE program
 (
     program_id int auto_increment PRIMARY KEY NOT NULL,
     program_name varchar (50) not null,
     directorate varchar (50)
 );
 
-CREATE TABLE IF NOT EXISTS scientific_field
+DROP TABLE IF EXISTS scientific_field;
+CREATE TABLE scientific_field
 (
     scientific_field_id int auto_increment PRIMARY KEY NOT NULL,
     scientific_field_name varchar (50) not null
 );
 
-CREATE TABLE IF NOT EXISTS executive
+DROP TABLE IF EXISTS executive;
+CREATE TABLE executive
 (
     executive_id int auto_increment PRIMARY KEY NOT NULL,
     executive_name varchar (50) not null
 );
 
-CREATE TABLE IF NOT EXISTS assessment
+DROP TABLE IF EXISTS assessment;
+CREATE TABLE assessment
 (
     assessment_id int auto_increment PRIMARY KEY NOT NULL,
     grade int not null,
     assessment_date date
 );
 
-CREATE TABLE IF NOT EXISTS location_address
+DROP TABLE IF EXISTS location_address;
+CREATE TABLE location_address
 (
     location_address_id int auto_increment PRIMARY KEY NOT NULL,
     postal_code varchar (50),
@@ -45,7 +50,8 @@ CREATE TABLE IF NOT EXISTS location_address
     city varchar (50)
 );
 
-CREATE TABLE IF NOT EXISTS organisation
+DROP TABLE IF EXISTS organisation;
+CREATE TABLE organisation
 (
     organisation_id int auto_increment PRIMARY KEY NOT NULL,
     organisation_name varchar (50) not null,
@@ -54,21 +60,24 @@ CREATE TABLE IF NOT EXISTS organisation
     FOREIGN KEY (location_address_id) REFERENCES location_address(location_address_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS company
+DROP TABLE IF EXISTS company;
+CREATE TABLE company
 (
     organisation_id int auto_increment PRIMARY KEY NOT NULL, /*prepei na vgalo to auto_increment mallon*/
     own_funds int not null,
     FOREIGN KEY (organisation_id) REFERENCES  organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE if not exists university
+DROP TABLE IF EXISTS university;
+CREATE TABLE university
 (
     organisation_id int auto_increment PRIMARY KEY NOT NULL,
     budget_ministry int not null,
     FOREIGN KEY (organisation_id) REFERENCES  organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS research_center
+DROP TABLE IF EXISTS research_center;
+CREATE TABLE research_center
 (
     organisation_id int auto_increment PRIMARY KEY NOT NULL,
     budget_ministry int not null,
@@ -76,7 +85,8 @@ CREATE TABLE IF NOT EXISTS research_center
     FOREIGN KEY (organisation_id) REFERENCES  organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS phone
+DROP TABLE IF EXISTS phone;
+CREATE TABLE phone
 (
     phone_id int auto_increment PRIMARY KEY NOT NULL,
     phone_number varchar (50),
@@ -84,7 +94,8 @@ CREATE TABLE IF NOT EXISTS phone
     FOREIGN KEY (organisation_id) REFERENCES organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS researcher
+DROP TABLE IF EXISTS researcher;
+CREATE TABLE researcher
 (
     researcher_id int auto_increment PRIMARY KEY NOT NULL,
     first_name varchar (50) not null, 
@@ -97,7 +108,8 @@ CREATE TABLE IF NOT EXISTS researcher
     FOREIGN KEY (organisation_id) REFERENCES organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS project
+DROP TABLE IF EXISTS project;
+CREATE TABLE project
 (
 	project_id int auto_increment PRIMARY KEY NOT NULL, 
 	title varchar (50) not null, 
@@ -122,7 +134,8 @@ CREATE TABLE IF NOT EXISTS project
     FOREIGN KEY (assessment_id) REFERENCES assessment(assessment_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS deliverable
+DROP TABLE IF EXISTS deliverable;
+CREATE TABLE deliverable
 (
     deliverable_id int auto_increment PRIMARY KEY NOT NULL, 
 	title varchar (50) not null, 
@@ -132,7 +145,8 @@ CREATE TABLE IF NOT EXISTS deliverable
     FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS works
+DROP TABLE IF EXISTS works;
+CREATE TABLE works
 (
     /*working_researcher_id int auto_increment PRIMARY KEY NOT NULL,*/
     works_id int auto_increment PRIMARY KEY NOT NULL,
