@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS program
 (
     program_id int auto_increment PRIMARY KEY NOT NULL,
     program_name varchar (50) not null,
-    management varchar (50)
+    directorate varchar (50)
 );
 
 CREATE TABLE IF NOT EXISTS scientific_field
@@ -142,9 +142,10 @@ CREATE TABLE IF NOT EXISTS deliverable
     FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS working_researcher
+CREATE TABLE IF NOT EXISTS works
 (
     /*working_researcher_id int auto_increment PRIMARY KEY NOT NULL,*/
+    works_id int auto_increment PRIMARY KEY NOT NULL,
     researcher_id int NOT NULL,
     project_id int NOT NULL, 
     FOREIGN KEY (researcher_id) REFERENCES researcher(researcher_id) ON DELETE RESTRICT ON UPDATE CASCADE,
