@@ -45,18 +45,6 @@ CREATE TABLE IF NOT EXISTS location_address
     city varchar (50)
 );
 
-/*
-CREATE TABLE IF NOT EXISTS organisation_type
-(
-   organisation_type_id int auto_increment PRIMARY KEY NOT NULL,
-   university_id int NOT NULL,
-   company_id int NOT NULL,
-   research_center_id int NOT NULL,
-   FOREIGN KEY (organisation_type_id) REFERENCES company(company_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-   FOREIGN KEY (organisation_type_id) REFERENCES university(university_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-   FOREIGN KEY (research_center_id) REFERENCES research_center(research_center_id) ON DELETE RESTRICT ON UPDATE CASCADE
-);*/
-
 CREATE TABLE IF NOT EXISTS organisation
 (
     organisation_id int auto_increment PRIMARY KEY NOT NULL,
