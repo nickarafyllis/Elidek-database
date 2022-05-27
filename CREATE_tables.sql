@@ -1,7 +1,8 @@
 /* =====================
 	CREATE DATABASE 
 ======================*/
-CREATE DATABASE IF NOT EXISTS `HFRIManagement`;
+DROP DATABASE IF EXISTS `HFRIManagement`;
+CREATE DATABASE `HFRIManagement`;
 ALTER DATABASE HFRIManagement
 CHARACTER SET utf8
 COLLATE utf8_bin; /*Greek_CI_AI;*/
@@ -63,7 +64,7 @@ CREATE TABLE organisation
 DROP TABLE IF EXISTS company;
 CREATE TABLE company
 (
-    organisation_id int auto_increment PRIMARY KEY NOT NULL, /*prepei na vgalo to auto_increment mallon*/
+    organisation_id int auto_increment PRIMARY KEY NOT NULL, 
     own_funds int not null,
     FOREIGN KEY (organisation_id) REFERENCES  organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -100,9 +101,9 @@ CREATE TABLE researcher
     researcher_id int auto_increment PRIMARY KEY NOT NULL,
     first_name varchar (50) not null, 
     last_name varchar (50) not null, 
-    sex varchar (10) not null, 
+    sex varchar (6) not null, 
     date_of_birth date,
-    age int as (TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE())),
+    /*age int GENERATED ALWAYS AS (TIMESTAMPDIFF(YEAR, date_of_birth, current_date())),*/ /*mono sta queries ta derived*/
     employment_date date,
     organisation_id int NOT NULL,
     FOREIGN KEY (organisation_id) REFERENCES organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -117,7 +118,7 @@ CREATE TABLE project
     amount int CHECK (amount>=100000 AND amount<=1000000),
     startdate date,
     enddate date,
-    duration int as (TIMESTAMPDIFF(YEAR, startdate, enddate)) CHECK (duration>0 AND duration<5), 
+    /*duration int as (TIMESTAMPDIFF(YEAR, startdate, enddate)) CHECK (duration>0 AND duration<5), */
     scientific_field_id int NOT NULL,
     program_id int NOT NULL,
     organisation_id int NOT NULL,
