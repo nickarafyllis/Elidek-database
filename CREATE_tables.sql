@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS phone;
 CREATE TABLE phone
 (
     phone_id int auto_increment PRIMARY KEY NOT NULL,
-    phone_number varchar (50),
+    phone_number varchar (50) NOT NULL,
     organisation_id int NOT NULL,
     FOREIGN KEY (organisation_id) REFERENCES organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -118,21 +118,30 @@ CREATE TABLE project
     amount int CHECK (amount>=100000 AND amount<=1000000),
     startdate date,
     enddate date,
-    /*duration int as (TIMESTAMPDIFF(YEAR, startdate, enddate)) CHECK (duration>0 AND duration<5), */
-    scientific_field_id int NOT NULL,
+    duration int, /*as (TIMESTAMPDIFF(YEAR, startdate, enddate)) CHECK (duration>0 AND duration<5), */
     program_id int NOT NULL,
     organisation_id int NOT NULL,
     executive_id int NOT NULL,
     supervisor_id int NOT NULL,
     assessor_id int NOT NULL,
     assessment_id int NOT NULL,
-    FOREIGN KEY (scientific_field_id) REFERENCES scientific_field(scientific_field_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    
     FOREIGN KEY (program_id) REFERENCES program(program_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (organisation_id) REFERENCES organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (executive_id) REFERENCES executive(executive_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (supervisor_id)  REFERENCES researcher(researcher_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (assessor_id) REFERENCES researcher(researcher_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (assessment_id) REFERENCES assessment(assessment_id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+DROP TABLE IF EXISTS has;
+CREATE TABLE has
+(
+    has_id int auto_increment PRIMARY KEY NOT NULL,
+    project_id int NOT NULL,
+    scientific_field_id int NOT NULL,
+    FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (scientific_field_id) REFERENCES scientific_field(scientific_field_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS deliverable;
