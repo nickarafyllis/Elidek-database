@@ -16,22 +16,22 @@ DROP TABLE IF EXISTS program;
 CREATE TABLE program
 (
     program_id int auto_increment PRIMARY KEY NOT NULL,
-    program_name varchar (50) not null,
-    directorate varchar (50)
+    program_name varchar (50) unique not null,
+    directorate varchar (100)
 );
 
 DROP TABLE IF EXISTS scientific_field;
 CREATE TABLE scientific_field
 (
     scientific_field_id int auto_increment PRIMARY KEY NOT NULL,
-    scientific_field_name varchar (50) not null
+    scientific_field_name varchar (50) unique not null
 );
 
 DROP TABLE IF EXISTS executive;
 CREATE TABLE executive
 (
     executive_id int auto_increment PRIMARY KEY NOT NULL,
-    executive_name varchar (50) not null
+    executive_name varchar (50) unique not null
 );
 
 DROP TABLE IF EXISTS assessment;
@@ -55,7 +55,7 @@ DROP TABLE IF EXISTS organisation;
 CREATE TABLE organisation
 (
     organisation_id int auto_increment PRIMARY KEY NOT NULL,
-    organisation_name varchar (50) not null,
+    organisation_name varchar (50) unique not null,
     abbreviation varchar (10),
     location_address_id int NOT NULL,
     FOREIGN KEY (location_address_id) REFERENCES location_address(location_address_id) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS phone;
 CREATE TABLE phone
 (
     phone_id int auto_increment PRIMARY KEY NOT NULL,
-    phone_number varchar (50) NOT NULL,
+    phone_number varchar (50) unique NOT NULL,
     organisation_id int NOT NULL,
     FOREIGN KEY (organisation_id) REFERENCES organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -113,7 +113,7 @@ DROP TABLE IF EXISTS project;
 CREATE TABLE project
 (
 	project_id int auto_increment PRIMARY KEY NOT NULL, 
-	title varchar (50) not null, 
+	title varchar (50) unique not null, 
     summary varchar (500),
     amount int CHECK (amount>=100000 AND amount<=1000000),
     startdate date,
@@ -125,7 +125,6 @@ CREATE TABLE project
     supervisor_id int NOT NULL,
     assessor_id int NOT NULL,
     assessment_id int NOT NULL,
-    
     FOREIGN KEY (program_id) REFERENCES program(program_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (organisation_id) REFERENCES organisation(organisation_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (executive_id) REFERENCES executive(executive_id) ON DELETE RESTRICT ON UPDATE CASCADE,
