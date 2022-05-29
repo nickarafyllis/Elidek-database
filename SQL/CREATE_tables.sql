@@ -101,7 +101,7 @@ CREATE TABLE researcher
     researcher_id int auto_increment PRIMARY KEY NOT NULL,
     first_name varchar (50) not null, 
     last_name varchar (50) not null, 
-    sex varchar (6) not null, 
+    sex varchar (12) not null, 
     date_of_birth date,
     /*age int GENERATED ALWAYS AS (TIMESTAMPDIFF(YEAR, date_of_birth, current_date())),*/ /*mono sta queries ta derived*/
     employment_date date,
@@ -114,11 +114,11 @@ CREATE TABLE project
 (
 	project_id int auto_increment PRIMARY KEY NOT NULL, 
 	title varchar (50) unique not null, 
-    summary varchar (500),
+    summary varchar (1000),
     amount int CHECK (amount>=100000 AND amount<=1000000),
     startdate date,
     enddate date,
-    duration int, /*as (TIMESTAMPDIFF(YEAR, startdate, enddate)) CHECK (duration>0 AND duration<5), */
+    #duration int CHECK (duration>0 AND duration<5), /*as (TIMESTAMPDIFF(YEAR, startdate, enddate)), */
     program_id int NOT NULL,
     organisation_id int NOT NULL,
     executive_id int NOT NULL,
