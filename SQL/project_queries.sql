@@ -1,7 +1,7 @@
 #3.6
 
 select  
-concat(researcher.first_name,' ',researcher.last_name) as full_name, count(*)
+concat(researcher.first_name,' ',researcher.last_name) as full_name, count(*) as active_project_number
 FROM researcher
 inner join works ON works.researcher_id=researcher.researcher_id
 inner join project
@@ -13,7 +13,7 @@ order by count(*) DESC
 
 #3.7
 
-SELECT executive_name, organisation_name, SUM(amount)
+SELECT executive_name, organisation_name, SUM(amount) as total_sum
 FROM executive
 JOIN project 
 ON executive.executive_id=project.executive_id
