@@ -20,7 +20,7 @@ works = pd.read_csv("./Data/works.csv")
 mydb = mysql.connector.connect(
     host = "localhost",
     user = "root",
-    passwd = "root",
+    passwd = '',
     database = "HFRIManagement"
 )
 
