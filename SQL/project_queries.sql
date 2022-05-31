@@ -1,5 +1,47 @@
-#leipoun 3.1 3.4 3.5miso 3.8
+#leipoun 3.4 3.5miso 
 
+#3.1 
+
+#1. 
+select program.program_name
+from program;
+
+#2
+
+#a
+select title
+from project
+join program
+on project.program_id=program.program_id
+where program.program_id=2 -- parametros
+order by enddate - startdate desc
+
+#b
+select title
+from project
+join program
+on project.program_id=program.program_id
+where program.program_id=2 -- parametros
+order by startdate desc
+
+#c
+select title
+from project
+join program
+on project.program_id=program.program_id
+join executive
+on project.executive_id=executive.executive_id
+where program.program_id=2  -- parametros 
+order by executive_name
+
+#3
+select concat(researcher.first_name,' ',researcher.last_name) as full_name
+from researcher 
+join works
+on researcher.researcher_id=works.researcher_id
+join project
+on works.project_id=project.project_id
+where project.project_id=2 -- parametros
 
 #3.3
 1.
@@ -7,7 +49,7 @@ select title
 from project
 inner join has
 on project.project_id=has.project_id
-where(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_id=3)
+where(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_id=3);
 
 2.#exo valei mono autous pou doulevoun #den exo valei ton teleytaio xrono
 select 
@@ -51,6 +93,9 @@ JOIN project
 ON executive.executive_id=project.executive_id
 JOIN organisation
 ON project.organisation_id=organisation.organisation_id
+join company
+on organisation.organisation_id=company.organisation_id
+where own_funds<>0
 GROUP BY executive_name 
 ORDER BY SUM(amount) DESC
 LIMIT 5;
