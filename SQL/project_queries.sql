@@ -54,3 +54,16 @@ ON project.organisation_id=organisation.organisation_id
 GROUP BY executive_name 
 ORDER BY SUM(amount) DESC
 LIMIT 5;
+
+#3.8
+select concat(researcher.first_name,' ',researcher.last_name) as full_name , count(*) 
+from researcher 
+join works on works.researcher_id = researcher.researcher_id 
+where works.project_id in ( 
+	SELECT DISTINCT project.project_id
+	FROM project 
+	WHERE project.project_id not in (select project_id from deliverable)
+) 
+group by works.researcher_id
+having count(*)>4
+order by count(*) desc;
