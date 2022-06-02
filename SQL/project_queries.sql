@@ -28,12 +28,11 @@ order by startdate desc
 select title
 from project
 join program
-on project.program_id=program.program_id
+on project.program_name=program.program_name
 join executive
-on project.executive_id=executive.executive_id
-where program.program_id=2  -- parametros 
-order by executive_name
-
+on project.executive_name=executive.executive_name
+where program.program_name='Euratom'  -- parametros 
+order by executive.executive_name
 #3
 select concat(researcher.first_name,' ',researcher.last_name) as full_name
 from researcher 
