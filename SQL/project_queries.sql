@@ -12,16 +12,16 @@ from program;
 select title
 from project
 join program
-on project.program_id=program.program_id
-where program.program_id=2 -- parametros
+on project.program_name=program.program_name
+where program.program_name='Euratom' -- parametros
 order by enddate - startdate desc
 
 #b
 select title
 from project
 join program
-on project.program_id=program.program_id
-where program.program_id=2 -- parametros
+on project.program_name=program.program_name
+where program.program_name='Euratom' -- parametros
 order by startdate desc
 
 #c
