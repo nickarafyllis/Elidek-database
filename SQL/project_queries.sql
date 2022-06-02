@@ -87,18 +87,18 @@ order by count(*) DESC
 limit 3
 
 #3.7
-SELECT executive_name, organisation_name, SUM(amount) as total_sum
+SELECT executive.executive_name , organisation.organisation_name, SUM(amount)
 FROM executive
 JOIN project 
 ON executive.executive_name=project.executive_name
-JOIN organisation
+JOIN organisation 
 ON project.organisation_name=organisation.organisation_name
-join company
+JOIN company 
 on organisation.organisation_name=company.organisation_name
 where own_funds<>0
-GROUP BY executive_name 
-ORDER BY SUM(amount) DESC
-LIMIT 5;
+GROUP BY executive_name
+ORDER BY SUM(amount) 
+DESC LIMIT 5;
 
 #3.8
 select concat(researcher.first_name,' ',researcher.last_name) as full_name , count(*) 
