@@ -75,11 +75,11 @@ ORDER BY count(*) desc
 
 #3.6
 select  
-concat(researcher.first_name,' ',researcher.last_name) as full_name, count(*) as active_project_number
+researcher.first_name, researcher.last_name, count(*) as active_project_number
 FROM researcher
 inner join works ON works.researcher_id=researcher.researcher_id
 inner join project
-on works.project_id=project.project_id
+on works.title=project.title
 where(timestampdiff(year, date_of_birth,current_date())<40 
 AND current_date()<project.enddate AND current_date()>project.startdate)
 group by researcher.researcher_id
@@ -90,11 +90,11 @@ limit 3
 SELECT executive_name, organisation_name, SUM(amount) as total_sum
 FROM executive
 JOIN project 
-ON executive.executive_id=project.executive_id
+ON executive.executive_name=project.executive_name
 JOIN organisation
-ON project.organisation_id=organisation.organisation_id
+ON project.organisation_name=organisation.organisation_name
 join company
-on organisation.organisation_id=company.organisation_id
+on organisation.organisation_name=company.organisation_name
 where own_funds<>0
 GROUP BY executive_name 
 ORDER BY SUM(amount) DESC

@@ -1,101 +1,101 @@
-scientific_field_id,project_id
-6,16
-2,22
-3,2
-13,12
-14,45
-2,54
-5,40
-8,22
-2,4
-15,36
-1,40
-15,26
-13,14
-3,45
-8,42
-6,18
-3,50
-4,1
-9,43
-13,24
-12,22
-2,51
-6,49
-9,14
-7,17
-4,36
-8,39
-10,52
-13,48
-8,10
-11,1
-14,48
-2,18
-14,56
-5,6
-6,22
-9,38
-10,18
-3,45
-15,37
-15,4
-13,26
-8,37
-12,6
-10,5
-15,48
-5,14
-6,40
-11,27
-14,27
-4,25
-3,43
-12,51
-11,3
-3,48
-12,29
-8,14
-11,4
-9,11
-12,41
-14,48
-6,9
-12,4
-7,52
-2,8
-10,32
-6,27
-10,19
-9,60
-14,45
-15,32
-8,38
-7,44
-15,51
-3,45
-12,36
-9,46
-6,51
-3,35
-15,9
-3,43
-3,21
-15,5
-15,37
-7,58
-3,11
-9,43
-6,24
-9,40
-14,37
-11,48
-7,35
-2,9
-3,7
-1,16
-5,22
-13,1
-5,45
-7,23
-4,17
+scientific_field_name,title
+Mineralogy,proj36
+Chemical engineering,proj12
+Construction engineering,proj22
+Mineralogy,proj14
+Construction engineering,proj58
+Materials engineering,proj37
+Molecular and Chemical physics,proj28
+Mineralogy,proj35
+Chemical engineering,proj31
+Civil engineering,proj21
+Construction engineering,proj12
+Computer hardware and architecture,proj6
+Industrial biotechnology,proj52
+Environmental biotechnology,proj44
+Computer hardware and architecture,proj25
+Nuclear physics,proj17
+Mineralogy,proj9
+Computer hardware and architecture,proj29
+Mineralogy,proj41
+Oceanography,proj46
+Environmental biotechnology,proj2
+Computer hardware and architecture,proj22
+Applied mathematics,proj16
+Nano-technology,proj39
+Marine biology,proj47
+Industrial biotechnology,proj31
+Materials engineering,proj4
+Industrial biotechnology,proj42
+Civil engineering,proj53
+Biochemistry and molecular biology,proj12
+Industrial biotechnology,proj25
+Industrial biotechnology,proj15
+Civil engineering,proj10
+Biochemistry and molecular biology,proj33
+Marine biology,proj40
+Nuclear physics,proj23
+Industrial biotechnology,proj11
+Oceanography,proj16
+Nuclear physics,proj6
+Applied mathematics,proj50
+Civil engineering,proj59
+Oceanography,proj49
+Oceanography,proj4
+Chemical engineering,proj51
+Industrial biotechnology,proj12
+Nano-technology,proj54
+Environmental biotechnology,proj5
+Molecular and Chemical physics,proj6
+Civil engineering,proj27
+Applied mathematics,proj58
+Industrial biotechnology,proj1
+Mineralogy,proj40
+Biochemistry and molecular biology,proj13
+Biochemistry and molecular biology,proj32
+Nano-technology,proj1
+Molecular and Chemical physics,proj33
+Marine biology,proj35
+Molecular and Chemical physics,proj50
+Environmental biotechnology,proj38
+Marine biology,proj37
+Marine biology,proj53
+Construction engineering,proj7
+Chemical engineering,proj54
+Computer hardware and architecture,proj26
+Construction engineering,proj33
+Environmental biotechnology,proj52
+Marine biology,proj6
+Applied mathematics,proj9
+Applied mathematics,proj26
+Industrial biotechnology,proj55
+Marine biology,proj38
+Marine biology,proj21
+Oceanography,proj35
+Mineralogy,proj6
+Mineralogy,proj56
+Biochemistry and molecular biology,proj58
+Applied mathematics,proj34
+Materials engineering,proj2
+Nano-technology,proj56
+Applied mathematics,proj5
+Oceanography,proj24
+Industrial biotechnology,proj38
+Marine biology,proj15
+Nano-technology,proj31
+Biochemistry and molecular biology,proj35
+Computer hardware and architecture,proj18
+Applied mathematics,proj11
+Applied mathematics,proj42
+Materials engineering,proj58
+Nuclear physics,proj1
+Oceanography,proj38
+Construction engineering,proj19
+Biochemistry and molecular biology,proj5
+Nano-technology,proj59
+Nuclear physics,proj53
+Biochemistry and molecular biology,proj38
+Materials engineering,proj35
+Biochemistry and molecular biology,proj24
+Mineralogy,proj11
+Industrial biotechnology,proj33

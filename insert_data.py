@@ -94,13 +94,14 @@ for i in range(len(organisation_types)):
     budget_ministry= organisation_types['budget_ministry'][i]
     budget_private_actions= organisation_types['budget_private_actions'][i]
     budget_ministry2= organisation_types['budget_ministry2'][i]
+    organisation_name=organisation_types['organisation_name'][i]
 
-    sqlFormula1 = """INSERT INTO company (own_funds) 
-                    VALUES ('{}')""".format(own_funds)
-    sqlFormula2 = """INSERT INTO university (budget_ministry) 
-                    VALUES ('{}')""".format(budget_ministry)
-    sqlFormula3 = """INSERT INTO research_center (budget_private_actions,budget_ministry) 
-                    VALUES ('{}','{}')""".format(budget_private_actions,budget_ministry2)
+    sqlFormula1 = """INSERT INTO company (own_funds,organisation_name) 
+                    VALUES ('{}','{}')""".format(own_funds,organisation_name)
+    sqlFormula2 = """INSERT INTO university (budget_ministry,organisation_name) 
+                    VALUES ('{}','{}')""".format(budget_ministry,organisation_name)
+    sqlFormula3 = """INSERT INTO research_center (budget_private_actions,budget_ministry,organisation_name) 
+                    VALUES ('{}','{}','{}')""".format(budget_private_actions,budget_ministry2,organisation_name)
                     
     mycursor.execute(sqlFormula1)
     mycursor.execute(sqlFormula2)
@@ -109,10 +110,10 @@ for i in range(len(organisation_types)):
  
 for i in range(len(phone_numbers)):  
     phone_number = phone_numbers['phone_number'][i].replace("'","").replace('"',"")
-    organisation_id = phone_numbers['organisation_id'][i]
+    organisation_name = phone_numbers['organisation_name'][i]
 
-    sqlFormula = """INSERT INTO phone (phone_number,organisation_id) 
-                    VALUES ('{}','{}')""".format(phone_number,organisation_id)
+    sqlFormula = """INSERT INTO phone (phone_number,organisation_name) 
+                    VALUES ('{}','{}')""".format(phone_number,organisation_name)
                     
     mycursor.execute(sqlFormula)
     mydb.commit() 
@@ -123,10 +124,10 @@ for i in range(len(researchers)):
     sex = researchers['sex'][i].replace("'","").replace('"',"")
     date_of_birth = researchers['date_of_birth'][i]
     employment_date = researchers['employment_date'][i]
-    organisation_id = researchers['organisation_id'][i]
+    organisation_name = researchers['organisation_name'][i]
 
-    sqlFormula = """INSERT INTO researcher (first_name,last_name,sex,date_of_birth,employment_date,organisation_id) 
-                    VALUES ('{}','{}','{}','{}','{}','{}')""".format(first_name,last_name,sex,date_of_birth,employment_date,organisation_id)
+    sqlFormula = """INSERT INTO researcher (first_name,last_name,sex,date_of_birth,employment_date,organisation_name) 
+                    VALUES ('{}','{}','{}','{}','{}','{}')""".format(first_name,last_name,sex,date_of_birth,employment_date,organisation_name)
                     
     mycursor.execute(sqlFormula)
     mydb.commit() 
@@ -137,26 +138,26 @@ for i in range(len(projects)):
     amount = projects['amount'][i]
     startdate = projects['startdate'][i].replace("'","").replace('"',"") 
     enddate = projects['enddate'][i].replace("'","").replace('"',"") 
-    #duration = relativedelta.relativedelta(enddate, startdate).years
-    program_id = projects['program_id'][i]
-    organisation_id = projects['organisation_id'][i] 
-    executive_id = projects['executive_id'][i]
+    #duration = timestampdiff(year,enddate, startdate)
+    program_name = projects['program_name'][i]
+    organisation_name = projects['organisation_name'][i] 
+    executive_name = projects['executive_name'][i]
     supervisor_id = projects['supervisor_id'][i]
     assessor_id = projects['assessor_id'][i]
     assessment_id = projects['assessment_id'][i]
 
-    sqlFormula = """INSERT INTO project (title,summary,amount,startdate,enddate,program_id,organisation_id,executive_id,supervisor_id,assessor_id,assessment_id) 
-                    VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')""".format(title,summary,amount,startdate,enddate,program_id,organisation_id,executive_id,supervisor_id,assessor_id,assessment_id)
+    sqlFormula = """INSERT INTO project (title,summary,amount,startdate,enddate,program_name,organisation_name,executive_name,supervisor_id,assessor_id,assessment_id) 
+                    VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')""".format(title,summary,amount,startdate,enddate,program_name,organisation_name,executive_name,supervisor_id,assessor_id,assessment_id)
                     
     mycursor.execute(sqlFormula)
     mydb.commit() 
 
 for i in range(len(has)):  
-    scientific_field_id = has['scientific_field_id'][i]
-    project_id = has['project_id'][i]
+    scientific_field_name = has['scientific_field_name'][i]
+    title = has['title'][i]
 
-    sqlFormula = """INSERT INTO has (project_id,scientific_field_id) 
-                    VALUES ('{}','{}')""".format(project_id,scientific_field_id)
+    sqlFormula = """INSERT INTO has (title,scientific_field_name) 
+                    VALUES ('{}','{}')""".format(title,scientific_field_name)
                     
     mycursor.execute(sqlFormula)
     mydb.commit() 
@@ -165,20 +166,20 @@ for i in range(len(deliverables)):
     deliverable_title = deliverables['deliverable_title'][i].replace("'","").replace('"',"")
     summary= deliverables['summary'][i].replace("'","").replace('"',"") 
     delivery_date = deliverables['delivery_date'][i].replace("'","").replace('"',"")
-    project_id = deliverables['project_id'][i]
+    title = deliverables['title'][i]
 
-    sqlFormula = """INSERT INTO deliverable (title,summary,delivery_date,project_id) 
-                    VALUES ('{}','{}','{}','{}')""".format(deliverable_title,summary,delivery_date,project_id)
+    sqlFormula = """INSERT INTO deliverable (deliverable_title,summary,delivery_date,title) 
+                    VALUES ('{}','{}','{}','{}')""".format(deliverable_title,summary,delivery_date,title)
                     
     mycursor.execute(sqlFormula)
     mydb.commit() 
  
 for i in range(len(works)):  
     researcher_id = works['researcher_id'][i]
-    project_id = works['project_id'][i]
+    title= works['title'][i]
 
-    sqlFormula = """INSERT INTO works (researcher_id,project_id) 
-                    VALUES ('{}','{}')""".format(researcher_id,project_id)
+    sqlFormula = """INSERT INTO works (researcher_id,title) 
+                    VALUES ('{}','{}')""".format(researcher_id,title)
                     
     mycursor.execute(sqlFormula)
     mydb.commit()  

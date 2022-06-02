@@ -3,7 +3,7 @@ AS
 select concat(researcher.first_name,' ',researcher.last_name) as full_name, project.title
 from researcher, works, project
 where researcher.researcher_id=works.researcher_id
-AND works.project_id=project.program_id
+AND works.title=project.title
 order by full_name,project.title;
 
 

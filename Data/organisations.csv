@@ -1,31 +1,31 @@
-"organisation_name","abbreviation","location_address_id"
-"Hellenic Petroleum","HP",1
-"Cosmote","OTE",2
-"Lavipharm","LVP",3
-"Intracom","INC",4
-"Heron S.A.","HR",5
-"Halyvourgiki Steel","HAL",6
-"Viohalco","VIOH",7
-"Larco","LAR",8
-"ALUMIL ","ALU",9
-"Vianex S.A.","VIA",10
-"National Technical University of Athens","NTUA",11
-"National Kapodistrian University of Athens","UoA",12
-"Technical University of Crete","UoC",13
-"University of Patras","UoP",14
-"University of West Attica","UoWA",15
-"Democritus University of Thrace","UoT",16
-"University of Ioannina","UoI",17
-"University of Thessaly","UoTh",18
-"Aristotle University of Thessaloniki","AUTH",19
-"Agricultural University of Athens","AUoA",20
-"Hellenic Centre for Marine Research","HCMR",21
-"National Observatory of Athens","NOoA",22
-"Hellenic Institute Pasteur","HIP",23
-"Centre for Research and Technology Hellas","CRTH",24
-"Biomedical Research Foundation","BRF",25
-"Foundation for Research and Technology Hellas","FRTH",26
-"Demokritos National Centre for Scientific Researc","DNCSR",27
-"Athens Information Technology","AIT",28
-"Research Academic Computer Technology Institu","RACTI",29
-"Academy of Athens","AoA",30
+organisation_name,abbreviation,location_address_id
+Hellenic Petroleum,HP,1
+Cosmote,OTE,2
+Lavipharm,LVP,3
+Intracom,INC,4
+Heron S.A.,HR,5
+Halyvourgiki Steel,HAL,6
+Viohalco,VIOH,7
+Larco,LAR,8
+ALUMIL ,ALU,9
+Vianex S.A.,VIA,10
+National Technical University of Athens,NTUA,11
+National Kapodistrian University of Athens,UoA,12
+Technical University of Crete,UoC,13
+University of Patras,UoP,14
+University of West Attica,UoWA,15
+Democritus University of Thrace,UoT,16
+University of Ioannina,UoI,17
+University of Thessaly,UoTh,18
+Aristotle University of Thessaloniki,AUTH,19
+Agricultural University of Athens,AUoA,20
+Hellenic Centre for Marine Research,HCMR,21
+National Observatory of Athens,NOoA,22
+Hellenic Institute Pasteur,HIP,23
+Centre for Research and Technology Hellas,CRTH,24
+Biomedical Research Foundation,BRF,25
+Foundation for Research and Technology Hellas,FRTH,26
+Demokritos National Centre for Scientific Researc,DNCSR,27
+Athens Information Technology,AIT,28
+Research Academic Computer Technology Institu,RACTI,29
+Academy of Athens,AoA,30

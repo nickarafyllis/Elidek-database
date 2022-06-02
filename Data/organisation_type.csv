@@ -1,31 +1,31 @@
-"own_funds","budget_ministry","budget_private_actions","budget_ministry2"
-2716458,0,0,0
-1711557,0,0,0
-3596884,0,0,0
-1537927,0,0,0
-3294467,0,0,0
-2305344,0,0,0
-3468052,0,0,0
-2135325,0,0,0
-3438728,0,0,0
-2213314,0,0,0
-0,2595961,0,0
-0,2657115,0,0
-0,3841605,0,0
-0,3338745,0,0
-0,2519824,0,0
-0,3030519,0,0
-0,3293748,0,0
-0,3657672,0,0
-0,1609024,0,0
-0,2655025,0,0
-0,0,2058668,3001803
-0,0,3581460,2544669
-0,0,2531489,1299266
-0,0,1560120,1068815
-0,0,1057248,3586247
-0,0,1402854,3860802
-0,0,1558971,2250690
-0,0,1748391,1683216
-0,0,2772540,3211915
-0,0,1058410,2398557
+own_funds,budget_ministry,budget_private_actions,budget_ministry2,organisation_name
+2716458,0,0,0,Hellenic Petroleum
+1711557,0,0,0,Cosmote
+3596884,0,0,0,Lavipharm
+1537927,0,0,0,Intracom
+3294467,0,0,0,Heron S.A.
+2305344,0,0,0,Halyvourgiki Steel
+3468052,0,0,0,Viohalco
+2135325,0,0,0,Larco
+3438728,0,0,0,ALUMIL 
+2213314,0,0,0,Vianex S.A.
+0,2595961,0,0,National Technical University of Athens
+0,2657115,0,0,National Kapodistrian University of Athens
+0,3841605,0,0,Technical University of Crete
+0,3338745,0,0,University of Patras
+0,2519824,0,0,University of West Attica
+0,3030519,0,0,Democritus University of Thrace
+0,3293748,0,0,University of Ioannina
+0,3657672,0,0,University of Thessaly
+0,1609024,0,0,Aristotle University of Thessaloniki
+0,2655025,0,0,Agricultural University of Athens
+0,0,2058668,3001803,Hellenic Centre for Marine Research
+0,0,3581460,2544669,National Observatory of Athens
+0,0,2531489,1299266,Hellenic Institute Pasteur
+0,0,1560120,1068815,Centre for Research and Technology Hellas
+0,0,1057248,3586247,Biomedical Research Foundation
+0,0,1402854,3860802,Foundation for Research and Technology Hellas
+0,0,1558971,2250690,Demokritos National Centre for Scientific Researc
+0,0,1748391,1683216,Athens Information Technology
+0,0,2772540,3211915,Research Academic Computer Technology Institu
+0,0,1058410,2398557,Academy of Athens

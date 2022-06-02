@@ -1,51 +1,51 @@
-"phone_number","organisation_id"
-"0030-20088-08171",1
-"0030-22531-53459",1
-"0030-23896-98912",2
-"0030-28350-24754",3
-"0030-25351-47877",3
-"0030-23388-05743",4
-"0030-22507-18785",5
-"0030-27872-54197",5
-"0030-28513-04678",6
-"0030-23653-96747",7
-"0030-28103-13831",8
-"0030-28652-06769",9
-"0030-23712-08875",10
-"0030-21137-23643",11
-"0030-25336-44581",12
-"0030-24641-06687",12
-"0030-24695-74204",13
-"0030-23246-43685",13
-"0030-22918-21334",13
-"0030-22385-14617",14
-"0030-27947-68241",15
-"0030-25682-76243",16
-"0030-27282-82368",17
-"0030-23772-62886",18
-"0030-28728-27388",19
-"0030-26611-78401",20
-"0030-25221-42238",21
-"0030-25720-48138",21
-"0030-21133-83874",22
-"0030-21472-38678",22
-"0030-21654-21834",22
-"0030-28253-63788",22
-"0030-26686-93375",23
-"0030-28624-95746",23
-"0030-25751-45285",24
-"0030-29888-88322",25
-"0030-28356-14628",25
-"0030-22274-91305",26
-"0030-21618-17885",27
-"0030-21602-61367",27
-"0030-27210-42391",27
-"0030-26278-38383",28
-"0030-20320-04759",28
-"0030-23151-69548",29
-"0030-24467-64928",29
-"0030-22483-23241",29
-"0030-21162-54712",30
-"0030-23428-81832",30
-"0030-24142-32157",30
-"0030-23459-66343",30
+phone_number,organisation_name
+0030-20088-08171,Hellenic Petroleum
+0030-22531-53459,Cosmote
+0030-23896-98912,Lavipharm
+0030-28350-24754,Intracom
+0030-25351-47877,Heron S.A.
+0030-23388-05743,Halyvourgiki Steel
+0030-22507-18785,Viohalco
+0030-27872-54197,Larco
+0030-28513-04678,ALUMIL 
+0030-23653-96747,Vianex S.A.
+0030-28103-13831,National Technical University of Athens
+0030-28652-06769,National Kapodistrian University of Athens
+0030-23712-08875,Technical University of Crete
+0030-21137-23643,University of Patras
+0030-25336-44581,University of West Attica
+0030-24641-06687,Democritus University of Thrace
+0030-24695-74204,University of Ioannina
+0030-23246-43685,University of Thessaly
+0030-22918-21334,Aristotle University of Thessaloniki
+0030-22385-14617,Agricultural University of Athens
+0030-27947-68241,Hellenic Centre for Marine Research
+0030-25682-76243,National Observatory of Athens
+0030-27282-82368,Hellenic Institute Pasteur
+0030-23772-62886,Centre for Research and Technology Hellas
+0030-28728-27388,Biomedical Research Foundation
+0030-26611-78401,Foundation for Research and Technology Hellas
+0030-25221-42238,Demokritos National Centre for Scientific Researc
+0030-25720-48138,Athens Information Technology
+0030-21133-83874,Research Academic Computer Technology Institu
+0030-21472-38678,Academy of Athens
+0030-21654-21834,Hellenic Petroleum
+0030-28253-63788,Cosmote
+0030-26686-93375,Lavipharm
+0030-28624-95746,Intracom
+0030-25751-45285,Heron S.A.
+0030-29888-88322,Halyvourgiki Steel
+0030-28356-14628,Viohalco
+0030-22274-91305,Larco
+0030-21618-17885,ALUMIL 
+0030-21602-61367,Vianex S.A.
+0030-27210-42391,National Technical University of Athens
+0030-26278-38383,National Kapodistrian University of Athens
+0030-20320-04759,Technical University of Crete
+0030-23151-69548,University of Patras
+0030-24467-64928,University of West Attica
+0030-22483-23241,Democritus University of Thrace
+0030-21162-54712,University of Ioannina
+0030-23428-81832,University of Thessaly
+0030-24142-32157,Aristotle University of Thessaloniki
+0030-23459-66343,Agricultural University of Athens
