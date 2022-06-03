@@ -1,5 +1,5 @@
 #nav-bar {
-  background-color: var(--bs-purple);
+  background-color: var(--bs-blue);
 }
 
 #nav-bar-text {
@@ -7,12 +7,12 @@
 }
 
 #show-btn {
-  background-color: var(--bs-purple);
-  border-radius: 16px;
+  background-color: var(--bs-blue);
+  border-radius: 2px;
 }
 
 #card {
-  text-align: center;
+  text-align: start;
 }
 
 #row {
@@ -20,12 +20,12 @@
 }
 
 #row-2 {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 #row-container {
   margin: auto;
-  max-width: 750px;
+  max-width: 1000px;
 }
 
 #card {
@@ -34,7 +34,7 @@
 
 #card-container-layout {
   min-height: 250px;
-  border-radius: 32px;
+  border-radius: 10px; 
   max-width: 280px;
   margin: auto;
   background-color: rgba(18,49,126,0.23);
