@@ -39,8 +39,8 @@ from researcher
 join works
 on researcher.researcher_id=works.researcher_id
 join project
-on works.project_id=project.project_id
-where project.project_id=2 -- parametros
+on works.title=project.title
+where project.title='proj2' -- parametros
 
 #3.3
 1.
