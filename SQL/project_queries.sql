@@ -44,11 +44,11 @@ where project.title='proj2' -- parametros
 
 #3.3
 1.
-select title
+select project.title
 from project
 inner join has
-on project.project_id=has.project_id
-where(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_id=3);
+on project.title=has.title
+where(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_name='Nuclear physics');
 
 2.#exo valei mono autous pou doulevoun #den exo valei ton teleytaio xrono
 select 
