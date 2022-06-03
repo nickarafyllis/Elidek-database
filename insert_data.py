@@ -7,7 +7,6 @@ programs = pd.read_csv("./Data/programs.csv")
 scientific_fields= pd.read_csv("./Data/scientific_fields.csv")
 executives = pd.read_csv("./Data/executives.csv")
 assessments = pd.read_csv("./Data/assessments.csv")
-location_address = pd.read_csv("./Data/address.csv")
 organisations = pd.read_csv("./Data/organisations.csv")
 organisation_types = pd.read_csv("./Data/organisation_type.csv")
 phone_numbers = pd.read_csv("./Data/phone_numbers.csv")
@@ -65,26 +64,16 @@ for i in range(len(assessments)):
                     
     mycursor.execute(sqlFormula)
     mydb.commit()  
-
- 
-for i in range(len(location_address)):  
-    postal_code = location_address['postal_code'][i]
-    street= location_address['street'][i].replace("'","").replace('"',"") 
-    city= location_address['city'][i].replace("'","").replace('"',"") 
-
-    sqlFormula = """INSERT INTO location_address (postal_code,street,city) 
-                    VALUES ('{}','{}','{}')""".format(postal_code,street,city)
-                    
-    mycursor.execute(sqlFormula)
-    mydb.commit() 
  
 for i in range(len(organisations)):  
     organisation_name = organisations['organisation_name'][i].replace("'","").replace('"',"")
     abbreviation = organisations['abbreviation'][i].replace("'","").replace('"',"")
-    location_address_id = organisations['location_address_id'][i]
+    postal_code = organisations['postal_code'][i]
+    street= organisations['street'][i].replace("'","").replace('"',"") 
+    city= organisations['city'][i].replace("'","").replace('"',"")
 
-    sqlFormula = """INSERT INTO organisation (organisation_name,abbreviation,location_address_id) 
-                    VALUES ('{}','{}','{}')""".format(organisation_name,abbreviation,location_address_id)
+    sqlFormula = """INSERT INTO organisation (organisation_name,abbreviation,postal_code,street,city) 
+                    VALUES ('{}','{}','{}','{}','{}')""".format(organisation_name,abbreviation,postal_code,street,city)
                     
     mycursor.execute(sqlFormula)
     mydb.commit() 

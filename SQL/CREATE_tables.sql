@@ -39,22 +39,15 @@ CREATE TABLE assessment
     assessment_date date
 );
 
-DROP TABLE IF EXISTS location_address;
-CREATE TABLE location_address
-(
-    location_address_id int auto_increment PRIMARY KEY NOT NULL,
-    postal_code varchar (50),
-    street varchar (50),
-    city varchar (50)
-);
-
 DROP TABLE IF EXISTS organisation;
 CREATE TABLE organisation
 (
     organisation_name varchar (50) PRIMARY KEY not null,
     abbreviation varchar (10),
-    location_address_id int NOT NULL,
-    FOREIGN KEY (location_address_id) REFERENCES location_address(location_address_id) ON DELETE RESTRICT ON UPDATE CASCADE
+    postal_code varchar (50),
+    street varchar (50),
+    city varchar (50)
+    
 );
 
 DROP TABLE IF EXISTS company;
