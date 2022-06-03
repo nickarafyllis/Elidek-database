@@ -12,56 +12,54 @@ from program;
 select title
 from project
 join program
-on project.program_id=program.program_id
-where program.program_id=2 -- parametros
+on project.program_name=program.program_name
+where program.program_name='Euratom' -- parametros
 order by enddate - startdate desc
 
 #b
 select title
 from project
 join program
-on project.program_id=program.program_id
-where program.program_id=2 -- parametros
+on project.program_name=program.program_name
+where program.program_name='Euratom' -- parametros
 order by startdate desc
 
 #c
 select title
 from project
 join program
-on project.program_id=program.program_id
+on project.program_name=program.program_name
 join executive
-on project.executive_id=executive.executive_id
-where program.program_id=2  -- parametros 
-order by executive_name
-
+on project.executive_name=executive.executive_name
+where program.program_name='Euratom'  -- parametros 
+order by executive.executive_name
 #3
 select concat(researcher.first_name,' ',researcher.last_name) as full_name
 from researcher 
 join works
 on researcher.researcher_id=works.researcher_id
 join project
-on works.project_id=project.project_id
-where project.project_id=2 -- parametros
+on works.title=project.title
+where project.title='proj2' -- parametros
 
 #3.3
 1.
-select title
+select project.title
 from project
 inner join has
-on project.project_id=has.project_id
-where(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_id=3);
+on project.title=has.title
+where(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_name='Nuclear physics');
 
-2.#exo valei mono autous pou doulevoun #den exo valei ton teleytaio xrono
-select 
-concat(researcher.first_name,' ',researcher.last_name) as full_name
+2.
+select concat(researcher.first_name,' ',researcher.last_name) as full_name
 from researcher
 inner join works
 on researcher.researcher_id=works.researcher_id
 inner join has
-on works.project_id= has.project_id 
+on works.title= has.title
 join project
-on project.project_id=has.project_id
-where(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_id=3);
+on project.title=has.title
+where(current_date()<project.enddate AND current_date()>project.startdate AND timestampdiff(year,startdate, current_date())<1 AND has.scientific_field_name='Nuclear physics');
 
 #3.5 leipoun ta onomata #den exo valei ta top 3 
 SELECT A.scientific_field_id AS scientificfield1, B.scientific_field_id AS scientificfield2, count(*)
