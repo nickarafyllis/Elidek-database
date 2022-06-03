@@ -101,11 +101,12 @@ DESC LIMIT 5;
 #3.8
 select concat(researcher.first_name,' ',researcher.last_name) as full_name , count(*) 
 from researcher 
-join works on works.researcher_id = researcher.researcher_id 
-where works.project_id in ( 
-	SELECT DISTINCT project.project_id
-	FROM project 
-	WHERE project.project_id not in (select project_id from deliverable)
+join works 
+on works.researcher_id = researcher.researcher_id 
+where works.title in ( 
+    SELECT DISTINCT project.title
+    FROM project 
+    WHERE project.title not in (select title from deliverable)
 ) 
 group by works.researcher_id
 having count(*)>4
