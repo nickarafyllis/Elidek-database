@@ -46,7 +46,7 @@ where project.title='proj2' -- parametros
 1.
 select project.title
 from project
-inner join hasz
+inner join has
 on project.title=has.title
 where(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_name='Nuclear physics');
 
