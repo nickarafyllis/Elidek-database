@@ -80,7 +80,7 @@ def index():
                                )
     except Exception as e:
         print(e)
-        return render_template("landing.html", pageTitle = "Landing Page")
+        return render_template("landing.html", pageTitle = "Home")
 
 
 
