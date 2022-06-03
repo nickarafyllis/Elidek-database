@@ -61,14 +61,13 @@ join project
 on project.title=has.title
 where(current_date()<project.enddate AND current_date()>project.startdate AND timestampdiff(year,startdate, current_date())<1 AND has.scientific_field_name='Nuclear physics');
 
-#3.5 leipoun ta onomata #den exo valei ta top 3 
-SELECT A.scientific_field_id AS scientificfield1, B.scientific_field_id AS scientificfield2, count(*)
+#3.5 
+SELECT A.scientific_field_name AS scientificfield1, B.scientific_field_name AS scientificfield2, count(*)
 FROM has A, has B
-#join scientific_field on scientific_field.scientific_field_id=A.scientific_field_id
-WHERE A.has_id <> B.has_id
-AND A.scientific_field_id <> B.scientific_field_id
-AND A.project_id = B.project_id
-GROUP by A.scientific_field_id, B.scientific_field_id 
+WHERE A.title = B.title
+and A.scientific_field_name <> B.scientific_field_name
+and B.scientific_field_name > A.scientific_field_name
+GROUP by A.scientific_field_name, B.scientific_field_name 
 ORDER BY count(*) desc
 
 #3.6
