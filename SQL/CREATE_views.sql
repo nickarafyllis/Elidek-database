@@ -1,6 +1,6 @@
 CREATE VIEW projects_per_researcher
 AS
-select concat(researcher.first_name,' ',researcher.last_name) as full_name, project.title
+select concat(researcher.first_name,' ',researcher.last_name) as full_name, project.title, project.amount, project.startdate, project.enddate
 from researcher, works, project
 where researcher.researcher_id=works.researcher_id
 AND works.title=project.title
