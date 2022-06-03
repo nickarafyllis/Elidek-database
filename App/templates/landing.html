@@ -1,0 +1,81 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container" margin: auto id="row-container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">View Projects per Researcher</h4>
+                    <p class="card-text" id="paragraph">Simple Query to database to show all projects per researcher</p>
+                    <a class="btn btn-primary" id="show-btn" href="/students">Show</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">View Projects per Scientific Field </h4>
+                    <p class="card-text" id="paragraph">Simple Query to database to show projects per Scientific Field<br></p>
+                    <a class="btn btn-primary" id="show-btn" href="/grades">Show</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Create Researcher</h4>
+                    <p class="card-text" id="paragraph">Enter a new Researcher into the database<br></p>
+                    <a class="btn btn-primary" id="show-btn" href="/students/create">Create</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="row-2">
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Facts</h4>
+                    <p class="card-text" id="paragraph">Learn more about us!</p>
+                    <a class="btn btn-primary" id="show-btn" href="/students">Show</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                  <h4 class="card-title">Query 1</h4>
+                  <p class="card-text" id="paragraph">Select program to see its projects</p>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Programs
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">HTML</a></li>
+                          <li><a href="#">CSS</a></li>
+                          <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" id="card-container-layout">
+              <div class="card-body" id="card">
+                  <h4 class="card-title">Facts</h4>
+                  <p class="card-text" id="paragraph">Projects on the scientific field you are interested in</p>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Scientific Fields
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+{% endblock content %}

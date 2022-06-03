@@ -1,0 +1,170 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container" id="row-container" margin: auto>
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">View Projects per researcher</h4>
+                    <p class="card-text" id="paragraph">Simple Query to database to show all projects per researcher</p>
+                    <a class="btn btn-primary" id="show-btn" href="/students">Show</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">View Projects per scientific field</h4>
+                    <p class="card-text" id="paragraph">Simple Query to database to show projects per scientific field<br></p>
+                    <a class="btn btn-primary" id="show-btn" href="/grades">Show</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Create Researcher</h4>
+                    <p class="card-text" id="paragraph">Enter a new researcher into the database<br></p>
+                    <a class="btn btn-primary" id="show-btn" href="/students/create">Create</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="row-2">
+        <div class="col-md-6">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Hardworking young researchers</h4>
+                    <p class="card-text" id="paragraph">Researchers under 40 working the most active projects.</p>
+                    <div class="container">
+                        <ol>
+                            <li>
+                        <div class="row align-items-start">
+                            <div class="col">
+                              {{best_young_researcher1}}
+                            </div>
+                            <div class="col">
+                              {{projectnum1}}
+                            </div>
+                          </div>
+                        </li>
+                          <li>
+                        <div class="row align-items-center">
+                          <div class="col">
+                            {{best_young_researcher2}}
+                          </div>
+                          <div class="col">
+                            {{projectnum2}}
+                          </div>
+                        </div>
+                    </li>
+                            <li>
+                        <div class="row align-items-end">
+                          <div class="col">
+                            {{best_young_researcher3}}
+                          </div>
+                          <div class="col">
+                            {{projectnum3}}
+                          </div>
+                        </div>
+                    </li>
+                    </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Best Shooting Grade</h4>
+                    <p class="card-text" id="paragraph">The best Shooting grade is {{best_shooting_grade}} and belongs to {{best_shooter}}.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="row-3">
+        <div class="col-md-6">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Best Dribbling Grade</h4>
+                    <p class="card-text" id="paragraph">The best Dribbling grade is {{best_dribbling_grade}} and belongs to {{best_dribbler}}.</p>
+                    <div class="container">
+                        <div class="row align-items-start">
+                          <a>Executives who have given the most funds to a company</a>
+                          <ol>
+                              <li>
+                          <div class="col">
+                            {{executive_name1}}
+                          </div>
+                          <div class="col">
+                            {{organisation_name1}}                            
+                          </div>
+                          <div class="col">
+                            {{total_sum1}}
+                          </div>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="w-100"></div>
+                        <div class="row align-items-center">
+                          <div class="col">
+                            {{executive_name2}}
+                          </div>
+                          <div class="col">
+                            {{organisation_name2}}
+                            {{total_sum2}}
+                          </div>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="row align-items-end">
+                          <div class="col">
+                            {{executive_name3}}
+                          </div>
+                          <div class="col">
+                            {{organisation_name3}}
+                            {{total_sum3}}
+                          </div>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="row align-items-end">
+                          <div class="col">
+                            {{executive_name4}}
+                          </div>
+                          <div class="col">
+                            {{organisation_name4}}
+                            {{total_sum4}}
+                          </div>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="row align-items-end">
+                          <div class="col">
+                            {{executive_name5}}
+                          </div>
+                          <div class="col">
+                            {{organisation_name5}}
+                            <a>{{total_sum5}}</a>
+                          </div>
+                        </div>
+                        </li>
+                        </ol>
+                    </div>
+                    <p class="card-text" id="paragraph">The best Dribbling grade is {{best_dribbling_grade}} and belongs to {{best_dribbler}}.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Best Shooting Grade</h4>
+                    <p class="card-text" id="paragraph">The best Shooting grade is {{best_shooting_grade}} and belongs to {{best_shooter}}.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
