@@ -12,7 +12,7 @@ from project
 join program
 on project.program_name=program.program_name
 where program.program_name='Euratom' -- parametros
-order by Enddate - Startdate desc
+order by enddate - startdate desc
 
 #b
 select title
@@ -20,7 +20,7 @@ from project
 join program
 on project.program_name=program.program_name
 where program.program_name='Euratom' -- parametros
-order by Startdate desc
+order by startdate desc
 
 #c
 select title
@@ -46,7 +46,7 @@ select project.title
 from project
 inner join has
 on project.title=has.title
-where(current_date()<Enddate AND current_date()>Startdate AND has.scientific_field_name='Nuclear physics'); -- Nuclear physics san parametros
+where(current_date()<enddate AND current_date()>startdate AND has.scientific_field_name='Nuclear physics'); -- Nuclear physics san parametros
 
 2.
 select concat(researcher.first_name,' ',researcher.last_name) as full_name
@@ -57,7 +57,7 @@ inner join has
 on works.title= has.title
 join project
 on project.title=has.title
-where(current_date()<Enddate AND current_date()>Startdate AND timestampdiff(year,startdate, current_date())<1 AND has.scientific_field_name='Nuclear physics');
+where(current_date()<enddate AND current_date()>startdate AND timestampdiff(year,startdate, current_date())<1 AND has.scientific_field_name='Nuclear physics');
 
 #3.5 
 SELECT A.scientific_field_name AS scientificfield1, B.scientific_field_name AS scientificfield2, count(*) as count
@@ -77,7 +77,7 @@ inner join works ON works.researcher_id=researcher.researcher_id
 inner join project
 on works.title=project.title
 where(timestampdiff(year, date_of_birth,current_date())<40 
-AND current_date()<Enddate AND current_date()>Startdate)
+AND current_date()<enddate AND current_date()>startdate)
 group by researcher.researcher_id
 order by count(*) DESC
 limit 3
