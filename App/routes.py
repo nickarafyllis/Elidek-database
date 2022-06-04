@@ -103,7 +103,7 @@ def getProject():
 @app.route("/researchers/create", methods = ["GET", "POST"]) ## "GET" by default
 def createResearcher():
     """
-    Create new student in the database
+    Create new researcher in the database
     """
     form = ResearcherForm()
     ## when the form is submitted

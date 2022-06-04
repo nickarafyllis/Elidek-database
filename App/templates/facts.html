@@ -30,34 +30,6 @@
         <div class="col-md-4">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
-                    <h4 class="card-title">Multidisciplinary project fields </h4>
-                    <p class="card-text" id="paragraph">Scientific Fields sharing the most projects.</p>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Executive Name</th>
-                                    <th>Organisation Name</th>
-                                    <th>Total Sum</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for researcher in q5 %}
-                                    <tr>
-                                        <td> {{ researcher.scientificfield1 }} </td>
-                                        <td> {{ researcher.scientificfield2 }} </td>
-                                        <td> {{ researcher.count }} </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" id="card-container-layout">
-                <div class="card-body" id="card">
                     <h4 class="card-title">Hardworking young researchers</h4>
                     <p class="card-text" id="paragraph">Researchers under 40 working the most active projects.</p>
                     <div class="table-responsive">
@@ -81,9 +53,35 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body" id="card">
+                    <h4 class="card-title">Not productive researchers</h4>
+                    <p class="card-text" id="paragraph">Researcher working in the 5 or more projects without deliverables.</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Researcher Name</th>
+                                    <th>Number of Projects</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in q8 %}
+                                    <tr>
+                                        <td> {{ researcher.full_name }} </td>
+                                        <td> {{ researcher.project_num }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row" id="row-2">
-        <div class="col-md-6">
+    <div class="row" id="row-6">
+        <div class="col-md-4">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
                     <h4 class="card-title">Spending Executives</h4>
@@ -114,21 +112,23 @@
         <div class="col-md-6">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
-                    <h4 class="card-title">Not productive researchers</h4>
-                    <p class="card-text" id="paragraph">Researcher working in the 5 or more projects without deliverables.</p>
+                    <h4 class="card-title">Multidisciplinary project fields </h4>
+                    <p class="card-text" id="paragraph">Scientific Fields sharing the most projects.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Researcher Name</th>
-                                    <th>Number of Projects</th>
+                                    <th>Executive Name</th>
+                                    <th>Organisation Name</th>
+                                    <th>Total Sum</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for researcher in q8 %}
+                                {% for researcher in q5 %}
                                     <tr>
-                                        <td> {{ researcher.full_name }} </td>
-                                        <td> {{ researcher.project_num }} </td>
+                                        <td> {{ researcher.scientificfield1 }} </td>
+                                        <td> {{ researcher.scientificfield2 }} </td>
+                                        <td> {{ researcher.count }} </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
