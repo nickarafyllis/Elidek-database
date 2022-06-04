@@ -1,0 +1,45 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if project|length == 0 %}
+                    <!-- |length is a jinja2 filter that returns the amount of items in a sequence -->
+                    <h1 style="margin-top: 5rem;">No Grades found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Researcher Name</th>
+                                    <th>Title</th>
+                                    <th>Amount</th>
+                                    <th>Stardate</th>
+                                    <th>Enddate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for project in project %}
+                                    <tr>
+                                        <td> {{ project.full_name }} </td>
+                                        <td> {{ project.title}} </td>
+                                        <td> {{ project.amount }} </td>
+                                        <td> {{ project.startdate }} </td>
+                                        <td> {{ project.enddate }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

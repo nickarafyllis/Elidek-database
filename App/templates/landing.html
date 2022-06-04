@@ -8,16 +8,16 @@
                 <div class="card-body" id="card">
                     <h4 class="card-title">View Projects per Researcher</h4>
                     <p class="card-text" id="paragraph">Simple Query to database to show all projects per researcher</p>
-                    <a class="btn btn-primary" id="show-btn" href="/students">Show</a>
+                    <a class="btn btn-primary" id="show-btn" href="/projectperresearcher">Show</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
-                    <h4 class="card-title">View Projects per Scientific Field </h4>
-                    <p class="card-text" id="paragraph">Simple Query to database to show projects per Scientific Field<br></p>
-                    <a class="btn btn-primary" id="show-btn" href="/grades">Show</a>
+                    <h4 class="card-title">View Researchers </h4>
+                    <p class="card-text" id="paragraph">Simple Query to database to show all researchers<br></p>
+                    <a class="btn btn-primary" id="show-btn" href="/researchers">Show</a>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 <div class="card-body" id="card">
                     <h4 class="card-title">Create Researcher</h4>
                     <p class="card-text" id="paragraph">Enter a new Researcher into the database<br></p>
-                    <a class="btn btn-primary" id="show-btn" href="/students/create">Create</a>
+                    <a class="btn btn-primary" id="show-btn" href="/researchers/create">Create</a>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <div class="card-body" id="card">
                     <h4 class="card-title">Facts</h4>
                     <p class="card-text" id="paragraph">Learn more about us!</p>
-                    <a class="btn btn-primary" id="show-btn" href="/students">Show</a>
+                    <a class="btn btn-primary" id="show-btn" href="/facts">Show</a>
                 </div>
             </div>
         </div>
@@ -51,9 +51,9 @@
                       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Programs
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                          <li><a href="#">HTML</a></li>
-                          <li><a href="#">CSS</a></li>
-                          <li><a href="#">JavaScript</a></li>
+                          {% for programs in programs %}
+                            <li><a href="/projectsfield/{{programs.program_name}}">{{programs.program_name}}</a></li>
+                          {%endfor%}
                         </ul>
                     </div>
                 </div>
@@ -68,9 +68,9 @@
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Scientific Fields
                       <span class="caret"></span></button>
                       <ul class="dropdown-menu">
-                        <li><a href="#">HTML</a></li>
-                        <li><a href="#">CSS</a></li>
-                        <li><a href="#">JavaScript</a></li>
+                        {% for scifields in scifields %}
+                            <li><a href="#">{{scifields.scientific_field_name}}</a></li>
+                        {%endfor%}
                       </ul>
                   </div>
               </div>

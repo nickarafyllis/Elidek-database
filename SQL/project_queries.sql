@@ -60,17 +60,18 @@ on project.title=has.title
 where(current_date()<project.enddate AND current_date()>project.startdate AND timestampdiff(year,startdate, current_date())<1 AND has.scientific_field_name='Nuclear physics');
 
 #3.5 
-SELECT A.scientific_field_name AS scientificfield1, B.scientific_field_name AS scientificfield2, count(*)
+SELECT A.scientific_field_name AS scientificfield1, B.scientific_field_name AS scientificfield2, count(*) as count
 FROM has A, has B
 WHERE A.title = B.title
 and A.scientific_field_name <> B.scientific_field_name
 and B.scientific_field_name > A.scientific_field_name
 GROUP by A.scientific_field_name, B.scientific_field_name 
-ORDER BY count(*) desc
+ORDER BY count desc
+limit 3
 
 #3.6
 select  
-researcher.first_name, researcher.last_name, count(*) as active_project_number
+concat(researcher.first_name,' ',researcher.last_name) as full_name, count(*) as active_project_number
 FROM researcher
 inner join works ON works.researcher_id=researcher.researcher_id
 inner join project
@@ -92,11 +93,11 @@ JOIN company
 on organisation.organisation_name=company.organisation_name
 where own_funds<>0
 GROUP BY executive_name
-ORDER BY SUM(amount) 
-DESC LIMIT 5;
+ORDER BY SUM(amount) DESC 
+LIMIT 5;
 
 #3.8
-select concat(researcher.first_name,' ',researcher.last_name) as full_name , count(*) 
+select concat(researcher.first_name,' ',researcher.last_name) as full_name , count(*) as project_num
 from researcher 
 join works 
 on works.researcher_id = researcher.researcher_id 
@@ -107,4 +108,5 @@ where works.title in (
 ) 
 group by works.researcher_id
 having count(*)>4
-order by count(*) desc;
+order by count(*) desc
+limit 3;

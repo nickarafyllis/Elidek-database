@@ -1,0 +1,186 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if researcher|length == 0 %}
+                    <h1 style="margin-top: 5rem;">No Researchers found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Sex</th>
+                                    <th>Date of Birth</th>
+                                    <th>Employment Date</th>
+                                    <th>Organisation Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in researcher %}
+                                    <tr>
+                                        <td> {{ researcher.researcher_id }} </td>
+                                        <td> {{ researcher.first_name }} </td>
+                                        <td> {{ researcher.last_name }} </td>
+                                        <td> {{ researcher.sex }} </td>
+                                        <td> {{ researcher.date_of_birth }} </td>
+                                        <td> {{ researcher.employment_date }} </td>
+                                        <td> {{ researcher.organisation_name }} </td>
+                                        <td>
+                                            <a type="button" onclick="setModalFields(this)"
+                                            data-toggle="modal" data-researcher_id="{{ researcher.researcher_id }}" data-first_name="{{ researcher.first_name }}"
+                                            data-last_name="{{researcher.last_name}}"  data-sex= "{{researcher.sex}}"
+                                            data-date_of_birth="{{researcher.date_of_birth}}" data-employment_date="{{researcher.employment_date}}"
+                                            data-organisation_name="{{researcher.organisation_name}}" data-bs-toggle = "modal"
+                                            data-bs-target="#editModal">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <button style = "all: unset; cursor: pointer;" type = "button"
+                                            data-bs-toggle = "modal" data-bs-target = "#deleteModal"
+                                            data-researcher_id = "{{ researcher.researcher_id }}" onclick = "setDeleteModalFields(this)">
+                                                <i class = "fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit modal -->
+<div id="editModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Researcher</h4>
+            </div>
+            <div class="modal-body">
+                <form id="modal-form">
+                    {{ form.hidden_tag() }}
+                    <div style="text-align: right;">
+                        <input type="text" name="researcher_id" id="researcher_id" readonly>
+                        <!-- Setting required to false disables the HTML attribute and leaves input validation to the backend -->
+                        {{ form.first_name(id = "first_name", required = False) }}
+                        {{ form.last_name(id = "last_name", required = False) }}
+                        {{ form.sex(id = "sex", required = False) }}
+                        {{ form.date_of_birth(id = "date_of_birth", required = False) }}
+                        {{ form.employment_date(id = "employment_date", required = False) }}
+                        {{ form.organisation_name(id = "organisation_name", required = False) }}
+                    </div>
+                    <div>
+                        {% if form.first_name.errors %}
+                        <ul class = "errors">
+                            {% for error in form.first_name.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if form.last_name.errors %}
+                        <ul class = "errors">
+                            {% for error in form.last_name.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if form.sex.errors %}
+                        <ul class = "errors">
+                            {% for error in form.sex.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if form.date_of_birth.errors %}
+                        <ul class = "errors">
+                            {% for error in form.date_of_birth.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if form.employment_date.errors %}
+                        <ul class = "errors">
+                            {% for error in form.employment_date.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if form.organisation_name.errors %}
+                        <ul class = "errors">
+                            {% for error in form.organisation_name.errors %}
+                            <li class = "alert text-danger">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                {{ form.submit(class = "btn btn btn-success", form = "modal-form", value = "Update") }}
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Delete modal -->
+<div class = "modal fade" id="deleteModal">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h5 class = "modal-title" id = "deleteModalLabel">Delete researcher</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+            </div>
+            <div class = "modal-body">
+                All associated grades will be deleted too. Are you sure?
+            </div>
+            <div class = "modal-footer">
+                <button type = "button" class = "btn btn-secondary" data-bs-dismiss = "modal">Close</button>
+                <form id = "delete-modal-form">
+                    <input type = "submit" class = "btn btn-danger" value = "Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+
+<script>
+    function setModalFields(row) {
+        document.getElementById("researcher_id").value = row.getAttribute("data-researcher_id");
+        document.getElementById("first_name").value = row.getAttribute("data-first_name");
+        document.getElementById("last_name").value = row.getAttribute("data-last_name");
+        document.getElementById("sex").value = row.getAttribute("data-sex");
+        document.getElementById("date_of_birth").value = row.getAttribute("data-date_of_birth");
+        document.getElementById("employment_date").value = row.getAttribute("data-employment_date");
+        document.getElementById("organisation_name").value = row.getAttribute("data-organisation_name");
+        document.getElementById("modal-form").action = "/researchers/update/" + row.getAttribute("data-researcher_id");
+        document.getElementById("modal-form").method = "POST";
+        // document.getElementById("submit").addEventListener("click", (e) => {e.preventDefault();});
+        // commented line above would prevent the default behavior of the submit button, that is, sending the
+        // form data with a post request to the determined address and subsequently closing the pop-up
+    }
+
+    function setDeleteModalFields(row) {
+        document.getElementById("delete-modal-form").action = "/researchers/delete/" + row.getAttribute("data-researcher_id");
+        document.getElementById("delete-modal-form").method = "POST";
+    }
+</script>
+{% endblock content %}

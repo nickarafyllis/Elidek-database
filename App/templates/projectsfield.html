@@ -1,0 +1,63 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if project|length == 0 %}
+                    <h1 style="margin-top: 5rem;">No Projects found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Amount</th>
+                                    <th>Last Name</th>
+                                    <th>Startdate</th>
+                                    <th>Enddate</th>
+                                    <th>Employment Date</th>
+                                    <th>Organisation Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in project %}
+                                    <tr>
+                                        <td> {{ researcher.researcher_id }} </td>
+                                        <td> {{ researcher.first_name }} </td>
+                                        <td> {{ researcher.last_name }} </td>
+                                        <td> {{ researcher.sex }} </td>
+                                        <td> {{ researcher.date_of_birth }} </td>
+                                        <td> {{ researcher.employment_date }} </td>
+                                        <td> {{ researcher.organisation_name }} </td>
+                                        <td>
+                                            <a type="button" onclick="setModalFields(this)"
+                                            data-toggle="modal" data-researcher_id="{{ researcher.researcher_id }}" data-first_name="{{ researcher.first_name }}"
+                                            data-last_name="{{researcher.last_name}}"  data-sex= "{{researcher.sex}}"
+                                            data-date_of_birth="{{researcher.date_of_birth}}" data-employment_date="{{researcher.employment_date}}"
+                                            data-organisation_name="{{researcher.organisation_name}}" data-bs-toggle = "modal"
+                                            data-bs-target="#editModal">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <button style = "all: unset; cursor: pointer;" type = "button"
+                                            data-bs-toggle = "modal" data-bs-target = "#deleteModal"
+                                            data-researcher_id = "{{ researcher.researcher_id }}" onclick = "setDeleteModalFields(this)">
+                                                <i class = "fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

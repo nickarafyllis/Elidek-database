@@ -6,162 +6,134 @@
         <div class="col-md-4">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
-                    <h4 class="card-title">View Projects per researcher</h4>
-                    <p class="card-text" id="paragraph">Simple Query to database to show all projects per researcher</p>
-                    <a class="btn btn-primary" id="show-btn" href="/students">Show</a>
+                    <h4 class="card-title">Organisations Query</h4>
+                    <p class="card-text" id="paragraph">Organisations with the same number(at least 10) of projects for 2 consecutive years.</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Organisation Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in q4 %}
+                                    <tr>
+                                        <td> {{ researcher.organisation_name }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
-                    <h4 class="card-title">View Projects per scientific field</h4>
-                    <p class="card-text" id="paragraph">Simple Query to database to show projects per scientific field<br></p>
-                    <a class="btn btn-primary" id="show-btn" href="/grades">Show</a>
+                    <h4 class="card-title">Multidisciplinary project fields </h4>
+                    <p class="card-text" id="paragraph">Scientific Fields sharing the most projects.</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Executive Name</th>
+                                    <th>Organisation Name</th>
+                                    <th>Total Sum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in q5 %}
+                                    <tr>
+                                        <td> {{ researcher.scientificfield1 }} </td>
+                                        <td> {{ researcher.scientificfield2 }} </td>
+                                        <td> {{ researcher.count }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card" id="card-container-layout">
-                <div class="card-body" id="card">
-                    <h4 class="card-title">Create Researcher</h4>
-                    <p class="card-text" id="paragraph">Enter a new researcher into the database<br></p>
-                    <a class="btn btn-primary" id="show-btn" href="/students/create">Create</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row" id="row-2">
-        <div class="col-md-6">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
                     <h4 class="card-title">Hardworking young researchers</h4>
                     <p class="card-text" id="paragraph">Researchers under 40 working the most active projects.</p>
-                    <div class="container">
-                        <ol>
-                            <li>
-                        <div class="row align-items-start">
-                            <div class="col">
-                              {{best_young_researcher1}}
-                            </div>
-                            <div class="col">
-                              {{projectnum1}}
-                            </div>
-                          </div>
-                        </li>
-                          <li>
-                        <div class="row align-items-center">
-                          <div class="col">
-                            {{best_young_researcher2}}
-                          </div>
-                          <div class="col">
-                            {{projectnum2}}
-                          </div>
-                        </div>
-                    </li>
-                            <li>
-                        <div class="row align-items-end">
-                          <div class="col">
-                            {{best_young_researcher3}}
-                          </div>
-                          <div class="col">
-                            {{projectnum3}}
-                          </div>
-                        </div>
-                    </li>
-                    </ol>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Researcher Name</th>
+                                    <th>Number of Active Projects</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in q6 %}
+                                    <tr>
+                                        <td> {{ researcher.full_name }} </td>
+                                        <td> {{ researcher.active_project_number }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card" id="card-container-layout">
-                <div class="card-body" id="card">
-                    <h4 class="card-title">Best Shooting Grade</h4>
-                    <p class="card-text" id="paragraph">The best Shooting grade is {{best_shooting_grade}} and belongs to {{best_shooter}}.</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row" id="row-3">
+    <div class="row" id="row-2">
         <div class="col-md-6">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
-                    <h4 class="card-title">Best Dribbling Grade</h4>
-                    <p class="card-text" id="paragraph">The best Dribbling grade is {{best_dribbling_grade}} and belongs to {{best_dribbler}}.</p>
-                    <div class="container">
-                        <div class="row align-items-start">
-                          <a>Executives who have given the most funds to a company</a>
-                          <ol>
-                              <li>
-                          <div class="col">
-                            {{executive_name1}}
-                          </div>
-                          <div class="col">
-                            {{organisation_name1}}                            
-                          </div>
-                          <div class="col">
-                            {{total_sum1}}
-                          </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div class="w-100"></div>
-                        <div class="row align-items-center">
-                          <div class="col">
-                            {{executive_name2}}
-                          </div>
-                          <div class="col">
-                            {{organisation_name2}}
-                            {{total_sum2}}
-                          </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div class="row align-items-end">
-                          <div class="col">
-                            {{executive_name3}}
-                          </div>
-                          <div class="col">
-                            {{organisation_name3}}
-                            {{total_sum3}}
-                          </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div class="row align-items-end">
-                          <div class="col">
-                            {{executive_name4}}
-                          </div>
-                          <div class="col">
-                            {{organisation_name4}}
-                            {{total_sum4}}
-                          </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div class="row align-items-end">
-                          <div class="col">
-                            {{executive_name5}}
-                          </div>
-                          <div class="col">
-                            {{organisation_name5}}
-                            <a>{{total_sum5}}</a>
-                          </div>
-                        </div>
-                        </li>
-                        </ol>
+                    <h4 class="card-title">Spending Executives</h4>
+                    <p class="card-text" id="paragraph">Executives who have given the most funds to a company.</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Executive Name</th>
+                                    <th>Organisation Name</th>
+                                    <th>Total Sum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in q7 %}
+                                    <tr>
+                                        <td> {{ researcher.executive_name }} </td>
+                                        <td> {{ researcher.organisation_name }} </td>
+                                        <td> {{ researcher.total_sum }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-                    <p class="card-text" id="paragraph">The best Dribbling grade is {{best_dribbling_grade}} and belongs to {{best_dribbler}}.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card" id="card-container-layout">
                 <div class="card-body" id="card">
-                    <h4 class="card-title">Best Shooting Grade</h4>
-                    <p class="card-text" id="paragraph">The best Shooting grade is {{best_shooting_grade}} and belongs to {{best_shooter}}.</p>
+                    <h4 class="card-title">Not productive researchers</h4>
+                    <p class="card-text" id="paragraph">Researcher working in the 5 or more projects without deliverables.</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Researcher Name</th>
+                                    <th>Number of Projects</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in q8 %}
+                                    <tr>
+                                        <td> {{ researcher.full_name }} </td>
+                                        <td> {{ researcher.project_num }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
