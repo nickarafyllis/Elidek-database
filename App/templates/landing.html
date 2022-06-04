@@ -52,7 +52,7 @@
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                           {% for programs in programs %}
-                            <li><a href="/projectsfield/{{programs.program_name}}">{{programs.program_name}}</a></li>
+                            <li><a href="#">{{programs.program_name}}</a></li>
                           {%endfor%}
                         </ul>
                     </div>
@@ -69,7 +69,7 @@
                       <span class="caret"></span></button>
                       <ul class="dropdown-menu">
                         {% for scifields in scifields %}
-                            <li><a href="#">{{scifields.scientific_field_name}}</a></li>
+                            <li><a href="/projectsfield/{{scifields.scientific_field_name}}">{{scifields.scientific_field_name}}</a></li>
                         {%endfor%}
                       </ul>
                   </div>
