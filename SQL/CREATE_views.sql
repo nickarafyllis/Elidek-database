@@ -14,3 +14,16 @@ from scientific_field, project, has
 where scientific_field.scientific_field_id = has.scientific_field_id
 AND has.project_id = project.project_id
 order by scientific_field.scientific_field_name, project.title;
+
+#3.4  -- View
+CREATE VIEW
+projperyear (organisation_name, project, year)
+as 
+select a.organisation_name, count(*), year(b.assessment_date) as year
+from organisation a 
+inner join project p 
+on a.organisation_name = p.organisation_name
+inner join assessment b 
+on p.assessment_id = b.assessment_id
+group by a.organisation_name, year 
+having count(*)>9
