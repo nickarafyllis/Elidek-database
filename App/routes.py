@@ -129,9 +129,9 @@ def facts():
         ## create connection to database
         cur = db.connection.cursor()
         
-        #cur.execute("")
-        #column_names = [i[0] for i in cur.description]
-        #q4 = [dict(zip(column_names, entry)) for entry in cur.fetchall()]
+        cur.execute("select d.organisation_name, d.project, d.year, e.year from projperyear d inner join projperyear e on d.organisation_name=e.organisation_name where d.year=e.year-1")
+        column_names = [i[0] for i in cur.description]
+        q4 = [dict(zip(column_names, entry)) for entry in cur.fetchall()]
         
         
         cur.execute("SELECT A.scientific_field_name AS scientificfield1, B.scientific_field_name AS scientificfield2, count(*) as count FROM has A, has B WHERE A.title = B.title and A.scientific_field_name <> B.scientific_field_name and B.scientific_field_name > A.scientific_field_name GROUP by A.scientific_field_name, B.scientific_field_name ORDER BY count desc limit 3")
