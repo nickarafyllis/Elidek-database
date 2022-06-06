@@ -61,23 +61,21 @@ where(current_date()<enddate AND current_date()>startdate AND timestampdiff(year
 
 #3.4  -- View
 CREATE VIEW
-projperyear (organisation_name, project, year)
+projperyear (organisation_name, projectnum, year)
 as 
-select a.organisation_name, count(*), year(b.assessment_date) as year
+select a.organisation_name, count(*), year(p.startdate) as year
 from organisation a 
 inner join project p 
 on a.organisation_name = p.organisation_name
-inner join assessment b 
-on p.assessment_id = b.assessment_id
 group by a.organisation_name, year 
 having count(*)>9
 
 #3.4 -- query
-select d.organisation_name, d.project, d.year, e.year
+select d.organisation_name, d.projectnum, e.year, d.year
 from projperyear d
 inner join projperyear e 
 on d.organisation_name=e.organisation_name
-where d.year=e.year-1
+where d.year=e.year+1
 
 #3.5 
 SELECT A.scientific_field_name AS scientificfield1, B.scientific_field_name AS scientificfield2, count(*) as count

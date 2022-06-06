@@ -47,15 +47,16 @@
                 <div class="card-body" id="card">
                   <h4 class="card-title">Query 1</h4>
                   <p class="card-text" id="paragraph">Select program to see its projects</p>
-                    <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Programs
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                          {% for programs in programs %}
-                            <li><a href="#">{{programs.program_name}}</a></li>
-                          {%endfor%}
-                        </ul>
-                    </div>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Programs
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      {% for programs in programs %}
+                        <li><a class="dropdown-item" href="#">{{programs.program_name}}</a></li>
+                      {%endfor%}
+                    </ul>
+                  </div>
                 </div>
             </div>
         </div>
@@ -65,13 +66,14 @@
                   <h4 class="card-title">Facts</h4>
                   <p class="card-text" id="paragraph">Projects on the scientific field you are interested in</p>
                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Scientific Fields
-                      <span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                        {% for scifields in scifields %}
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Scientific Fields
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      {% for scifields in scifields %}
                             <li><a href="/projectsfield/{{scifields.scientific_field_name}}">{{scifields.scientific_field_name}}</a></li>
-                        {%endfor%}
-                      </ul>
+                      {%endfor%}
+                    </ul>
                   </div>
               </div>
           </div>

@@ -19,11 +19,9 @@ order by scientific_field.scientific_field_name, project.title;
 CREATE VIEW
 projperyear (organisation_name, project, year)
 as 
-select a.organisation_name, count(*), year(b.assessment_date) as year
+select a.organisation_name, count(*), year(p.startdate) as year
 from organisation a 
 inner join project p 
 on a.organisation_name = p.organisation_name
-inner join assessment b 
-on p.assessment_id = b.assessment_id
 group by a.organisation_name, year 
 having count(*)>9

@@ -154,7 +154,7 @@ def facts():
         
         return render_template("facts.html",
                                pageTitle = "Elidek facts",
-                               #q4=q4,
+                               q4=q4,
                                q5=q5,
                                q6=q6,
                                q7=q7,
