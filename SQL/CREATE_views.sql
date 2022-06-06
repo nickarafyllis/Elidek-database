@@ -17,7 +17,7 @@ order by scientific_field.scientific_field_name, project.title;
 
 #3.4  -- View
 CREATE VIEW
-projperyear (organisation_name, project, year)
+projperyear (organisation_name, projectnum, year)
 as 
 select a.organisation_name, count(*), year(p.startdate) as year
 from organisation a 
