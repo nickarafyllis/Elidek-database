@@ -76,6 +76,7 @@ from projperyear d
 inner join projperyear e 
 on d.organisation_name=e.organisation_name
 where d.year=e.year+1
+and d.projectnum=e.projectnum
 
 #3.5 
 SELECT A.scientific_field_name AS scientificfield1, B.scientific_field_name AS scientificfield2, count(*) as count
