@@ -14,41 +14,28 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Amount</th>
-                                    <th>Last Name</th>
-                                    <th>Startdate</th>
-                                    <th>Enddate</th>
-                                    <th>Employment Date</th>
-                                    <th>Organisation Name</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for researcher in project %}
+                                {% for project in project %}
                                     <tr>
-                                        <td> {{ researcher.researcher_id }} </td>
-                                        <td> {{ researcher.first_name }} </td>
-                                        <td> {{ researcher.last_name }} </td>
-                                        <td> {{ researcher.sex }} </td>
-                                        <td> {{ researcher.date_of_birth }} </td>
-                                        <td> {{ researcher.employment_date }} </td>
-                                        <td> {{ researcher.organisation_name }} </td>
-                                        <td>
-                                            <a type="button" onclick="setModalFields(this)"
-                                            data-toggle="modal" data-researcher_id="{{ researcher.researcher_id }}" data-first_name="{{ researcher.first_name }}"
-                                            data-last_name="{{researcher.last_name}}"  data-sex= "{{researcher.sex}}"
-                                            data-date_of_birth="{{researcher.date_of_birth}}" data-employment_date="{{researcher.employment_date}}"
-                                            data-organisation_name="{{researcher.organisation_name}}" data-bs-toggle = "modal"
-                                            data-bs-target="#editModal">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <button style = "all: unset; cursor: pointer;" type = "button"
-                                            data-bs-toggle = "modal" data-bs-target = "#deleteModal"
-                                            data-researcher_id = "{{ researcher.researcher_id }}" onclick = "setDeleteModalFields(this)">
-                                                <i class = "fa fa-trash"></i>
-                                            </button>
-                                        </td>
+                                        <td> {{ project.title }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Researchers</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for researcher in researcher %}
+                                    <tr>
+                                        <td> {{ researcher.full_name }} </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

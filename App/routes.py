@@ -129,10 +129,9 @@ def facts():
         ## create connection to database
         cur = db.connection.cursor()
         
-        cur.execute("select d.organisation_name, d.projectnum, e.year, d.year from projperyear d inner join projperyear e on d.organisation_name=e.organisation_name where d.year=e.year+1")
+        cur.execute("SELECT d.organisation_name, d.projectnum, e.year, d.year from projperyear d inner join projperyear e on d.organisation_name=e.organisation_name where d.year=e.year+1")
         column_names = [i[0] for i in cur.description]
         q4 = [dict(zip(column_names, entry)) for entry in cur.fetchall()]
-        
         
         cur.execute("SELECT A.scientific_field_name AS scientificfield1, B.scientific_field_name AS scientificfield2, count(*) as count FROM has A, has B WHERE A.title = B.title and A.scientific_field_name <> B.scientific_field_name and B.scientific_field_name > A.scientific_field_name GROUP by A.scientific_field_name, B.scientific_field_name ORDER BY count desc limit 3")
         column_names = [i[0] for i in cur.description]
@@ -169,14 +168,20 @@ def get(scientificfield):
     """
     Delete researcher by id from database
     """
-    query = f"SELECT project.title FROM project INNER JOIN has on project.title=has.title WHERE(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_name={scientificfield});"
+    query1 = f"SELECT project.title FROM project INNER JOIN has on project.title=has.title WHERE(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_name={scientificfield});"
+    query2 = f"SELECT concat(researcher.first_name,' ',researcher.last_name) as full_name from researcher inner JOIN works on researcher.researcher_id=works.researcher_id inner join has on works.title= has.title join project on project.title=has.title where(current_date()<enddate AND current_date()>startdate AND timestampdiff(year,startdate, current_date())<1 AND has.scientific_field_name={scientificfield});;"
     try:
         cur = db.connection.cursor()
-        cur.execute(query)
+        cur.execute(query1)
         column_names = [i[0] for i in cur.description]
         project = [dict(zip(column_names, entry)) for entry in cur.fetchall()]
+        
+        cur.execute(query2)
+        column_names = [i[0] for i in cur.description]
+        researcher = [dict(zip(column_names, entry)) for entry in cur.fetchall()]
+        
         cur.close()
-        return render_template("projectsfield.html", project = project, pageTitle = "Projects  {scientificfield}")  #titlos
+        return render_template("projectsfield.html", project = project, researcher=researcher,pageTitle = scientificfield)  #titlos
 
     except Exception as e:
         flash(str(e), "danger")

@@ -11,8 +11,8 @@ CREATE VIEW projects_per_scientific_field
 AS
 select scientific_field.scientific_field_name, project.title
 from scientific_field, project, has
-where scientific_field.scientific_field_id = has.scientific_field_id
-AND has.project_id = project.project_id
+where scientific_field.scientific_field_name = has.scientific_field_name
+AND has.title = project.title
 order by scientific_field.scientific_field_name, project.title;
 
 #3.4  -- View

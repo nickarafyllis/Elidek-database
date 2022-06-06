@@ -71,7 +71,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       {% for scifields in scifields %}
-                            <li><a href="/projectsfield/{{scifields.scientific_field_name}}">{{scifields.scientific_field_name}}</a></li>
+                            <li><a href="/projectsfield/'{{scifields.scientific_field_name}}'">{{scifields.scientific_field_name}}</a></li>
                       {%endfor%}
                     </ul>
                   </div>
