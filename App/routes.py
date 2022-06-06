@@ -84,7 +84,7 @@ def deleteResearcher(researcherID):
         flash(str(e), "danger")
     return redirect(url_for("getResearcher"))
  
-@app.route("/projectperresearcher")
+@app.route("/projectperresearcher/")
 def getProject():
     """
     Retrieve projects and the researcher from database
@@ -129,7 +129,7 @@ def facts():
         ## create connection to database
         cur = db.connection.cursor()
         
-        cur.execute("select d.organisation_name, d.project, d.year, e.year from projperyear d inner join projperyear e on d.organisation_name=e.organisation_name where d.year=e.year-1")
+        cur.execute("select d.organisation_name, d.projectnum, e.year, d.year from projperyear d inner join projperyear e on d.organisation_name=e.organisation_name where d.year=e.year+1")
         column_names = [i[0] for i in cur.description]
         q4 = [dict(zip(column_names, entry)) for entry in cur.fetchall()]
         
