@@ -105,7 +105,6 @@ CREATE TABLE project
     amount int CHECK (amount>=100000 AND amount<=1000000),
     startdate date,
     enddate date,
-    #duration int CHECK (duration>0 AND duration<5), /*as (TIMESTAMPDIFF(YEAR, startdate, enddate)), */
     program_name varchar(50),
     organisation_name varchar (50),
     executive_name varchar(50),
