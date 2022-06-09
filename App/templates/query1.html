@@ -1,0 +1,59 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <h2>Order projects by:</h2>
+                <form action="/action_page.php">
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
+                    <label class="form-check-label" for="radio1">Duration</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+                    <label class="form-check-label" for="radio2">Start date</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+                    <label class="form-check-label" for="radio2">Executive</label>
+                  </div>
+                  <button type="submit" class="btn btn-dark mt-3">Submit</button>
+                </form>               
+                <div class="card-body" id="card">
+                {% if query|length == 0 %}
+                    <h1 style="margin-top: 5rem;">No Projects found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>startdate</th>
+                                    <th>enddate</th>
+                                    <th>executive_name</th>
+                                    <th>organisation_name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <a>Press a project to see its researchers.</a>
+                                {% for program in query %}
+                                    <tr>
+                                        <td> <a class="btn btn-secondary"  href="/researchersinproject/'{{ program.title }}'">{{ program.title }}</a> </td>
+                                        <td> {{ program.startdate }} </td>
+                                        <td> {{ program.enddate }} </td>
+                                        <td> {{ program.executive_name }} </td>
+                                        <td> {{ program.organisation_name }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

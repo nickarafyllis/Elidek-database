@@ -5,7 +5,7 @@ DROP DATABASE IF EXISTS `HFRIManagement`;
 CREATE DATABASE `HFRIManagement`;
 ALTER DATABASE HFRIManagement
 CHARACTER SET utf8
-COLLATE utf8_bin; /*Greek_CI_AI;*/
+COLLATE utf8_bin;
 
 /* =====================
 	CREATE ENTITIES 
@@ -112,6 +112,7 @@ CREATE TABLE project
     supervisor_id int,
     assessor_id int,
     assessment_id int,
+    CONSTRAINT duration CHECK ((timestampdiff(year,startdate, enddate))>=1 and (timestampdiff(year,enddate, startdate))<=4),
     FOREIGN KEY (program_name) REFERENCES program(program_name) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (organisation_name) REFERENCES organisation(organisation_name) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (executive_name) REFERENCES executive(executive_name) ON DELETE SET NULL ON UPDATE CASCADE,

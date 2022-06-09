@@ -48,12 +48,12 @@
                   <h4 class="card-title">Query 1</h4>
                   <p class="card-text" id="paragraph">Select program to see its projects</p>
                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                       Programs
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       {% for programs in programs %}
-                        <li><a class="dropdown-item" href="#">{{programs.program_name}}</a></li>
+                        <li><a class="dropdown-item" href="/program/'{{programs.program_name}}'">{{programs.program_name}}</a></li>
                       {%endfor%}
                     </ul>
                   </div>
@@ -66,12 +66,12 @@
                   <h4 class="card-title">Query 3</h4>
                   <p class="card-text" id="paragraph">Projects and researchers on the scientific field you are interested in</p>
                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" background-color:"var(--bs-red);">
                       Scientific Fields
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       {% for scifields in scifields %}
-                            <li><a href="/projectsfield/'{{scifields.scientific_field_name}}'">{{scifields.scientific_field_name}}</a></li>
+                            <li><a class="dropdown-item" href="/projectsfield/'{{scifields.scientific_field_name}}'">{{scifields.scientific_field_name}}</a></li>
                       {%endfor%}
                     </ul>
                   </div>

@@ -14,10 +14,11 @@
     <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/styles.css') }}">
 
 </head>
-
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico" />
     {% include "navbar.html" %}
 
-<body>
+<body style="background-image:  url('/static/images/background.jpg'); background-size: cover; background-attachment: fixed;  background-size: 100% 100%; alt="Elidek database"" >
+    
     <!-- all other templates are to be rendered "within" the following block -->
     {% block content %}
     {% endblock content %}

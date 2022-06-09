@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, flash, redirect, url_for, abort
 from flask_mysqldb import MySQL
 from App import app, db ## initially created by __init__.py, need to be used here
-from App.forms import ResearcherForm
+from App.forms import ResearcherForm, WorksForm
 
 @app.route("/")
 def index():
@@ -87,7 +87,7 @@ def deleteResearcher(researcherID):
 @app.route("/projectperresearcher/")
 def getProject():
     """
-    Retrieve projects and the researcher from database
+    Retrieve projects per researcher from database
     """
     try:
         cur = db.connection.cursor()
@@ -105,10 +105,10 @@ def createResearcher():
     """
     Create new researcher in the database
     """
-    form = ResearcherForm()
+    form1 = ResearcherForm()
     ## when the form is submitted
-    if(request.method == "POST" and form.validate_on_submit()):
-        newResearcher = form.__dict__
+    if(request.method == "POST" and form1.validate_on_submit()):
+        newResearcher = form1.__dict__
         query = "INSERT INTO researcher(first_name, last_name, sex, date_of_birth, employment_date, organisation_name) VALUES ('{}', '{}', '{}', '{}', '{}', '{}');".format(newResearcher['first_name'].data, newResearcher['last_name'].data, newResearcher['sex'].data, newResearcher['date_of_birth'].data, newResearcher['employment_date'].data, newResearcher['organisation_name'].data)
         try:
             cur = db.connection.cursor()
@@ -119,9 +119,24 @@ def createResearcher():
             return redirect(url_for("index"))
         except Exception as e: ## OperationalError
             flash(str(e), "danger")
+            
+    form2 = WorksForm()
+    ## when the form is submitted
+    if(request.method == "POST" and form2.validate_on_submit()):
+        newWorks = form2.__dict__
+        query = "INSERT INTO works(researcher_id, title) VALUES ('{}', '{}');".format(newWorks['researcher_id'].data, newWorks['title'].data)
+        try:
+            cur = db.connection.cursor()
+            cur.execute(query)
+            db.connection.commit()
+            cur.close()
+            flash("Working relationship inserted successfully", "success")
+            return redirect(url_for("index"))
+        except Exception as e: ## OperationalError
+            flash(str(e), "danger")
 
     ## else, response for GET request
-    return render_template("create_researcher.html", pageTitle = "Create Researcher", form = form)
+    return render_template("create_researcher.html", pageTitle = "Create", form1 = form1, form2 = form2)
     
 @app.route("/facts")
 def facts():
@@ -163,10 +178,51 @@ def facts():
         print(e)
         return render_template("facts.html", pageTitle = "Elidek facts")
     
+@app.route("/program/<string:programname>", methods = ["POST", "GET"])
+def getprog(programname):
+    """
+    Show projects in a program
+    """
+    query = f"SELECT title, startdate, enddate, executive_name, organisation_name from project join program on project.program_name=program.program_name where program.program_name={programname} order by enddate - startdate desc"
+    #query1 = f"SELECT title from project join program on project.program_name=program.program_name where program.program_name={programname} order by enddate - startdate desc" 
+    #query2 = f"SELECT title from project join program on project.program_name=program.program_name where program.program_name={programname} order by startdate desc"
+    #query3 = f"SELECT title from project join program on project.program_name=program.program_name where program.program_name={programname} order by executive.executive_name"    
+    try:
+        cur = db.connection.cursor()
+        cur.execute(query)
+        column_names = [i[0] for i in cur.description]
+        query = [dict(zip(column_names, entry)) for entry in cur.fetchall()]
+    
+        cur.close()
+        return render_template("query1.html", query=query, pageTitle = programname)  #titlos
+
+    except Exception as e:
+        flash(str(e), "danger")
+    return redirect(url_for("index"))
+
+@app.route("/researchersinproject/<string:projecttitle>", methods = ["POST", "GET"])
+def getres(projecttitle):
+    """
+    Show researchers in a project
+    """
+    query = f"SELECT concat(researcher.first_name,' ',researcher.last_name) as full_name from researcher join works on researcher.researcher_id=works.researcher_id join project on works.title=project.title where project.title={projecttitle}"
+    try:
+        cur = db.connection.cursor()
+        cur.execute(query)
+        column_names = [i[0] for i in cur.description]
+        query = [dict(zip(column_names, entry)) for entry in cur.fetchall()]
+    
+        cur.close()
+        return render_template("researchersinproject.html", query=query, pageTitle = projecttitle) #titlos
+
+    except Exception as e:
+        flash(str(e), "danger")
+    return redirect(url_for("index"))
+    
 @app.route("/projectsfield/<string:scientificfield>", methods = ["POST", "GET"])
 def get(scientificfield):
     """
-    Delete researcher by id from database
+    Show projects and researcher in a specific scientific field
     """
     query1 = f"SELECT project.title FROM project INNER JOIN has on project.title=has.title WHERE(current_date()<project.enddate AND current_date()>project.startdate AND has.scientific_field_name={scientificfield});"
     query2 = f"SELECT concat(researcher.first_name,' ',researcher.last_name) as full_name from researcher inner JOIN works on researcher.researcher_id=works.researcher_id inner join has on works.title= has.title join project on project.title=has.title where(current_date()<enddate AND current_date()>startdate AND timestampdiff(year,startdate, current_date())<1 AND has.scientific_field_name={scientificfield});;"
